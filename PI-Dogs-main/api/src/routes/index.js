@@ -1,6 +1,8 @@
 require('dotenv').config();
 const { Router } = require('express');
 const axios = require('axios');
+//const { Temperament } = require('../models/Temperament');
+const { Temperament, Dog } = require("../db");
 const { api_key } = process.env
 
 const apiKey = 'api_key=c28e9da8-8fe1-4d7d-8c0e-023aaa80d78d'
@@ -46,7 +48,12 @@ router.get('/dogs', async (req,res) => {
                     weight: p.weight.metric+' kg'
                 }
             })
-            res.send(dogName)
+            if(dogName.length < 1) {
+                res.send('no breed found')
+            } else {
+                
+                res.send(dogName)
+            }
         } catch {
             res.status(404).send('error en 2')
         }
@@ -62,8 +69,8 @@ router.get('/dogs/:id', async (req, res) => {
     const { id } = req.params;
     let breedID = (await axios.get(`https://api.thedogapi.com/v1/breeds?${apiKey}`)).data.filter( b => b.id == id)
     
-    if(!breedID) {
-        res.send('no breed found')
+    if(breedID.length < 1) {
+        res.send('no id found')
     } else {
         try {
            
@@ -82,7 +89,82 @@ router.get('/dogs/:id', async (req, res) => {
         }
     }
 })
+
+//!!-------------------------------------------------------- get /temperament------------------------------------
+
+router.get('/temperament', async (req,res) => {
+    
+    const alltemps = [];
+    const tempsDB = await Temperament.findAll();
+    if(tempsDB.length == 0){
+        const all = (await axios.get(`https://api.thedogapi.com/v1/breeds?${apiKey}`)).data.map( a => {
+            return {
+                temperament: a.temperament
+            }
+        });
+        
+        all.map( t => {
+            alltemps.push(t.temperament+", ")
+        })
+        let longString =  "".concat(...alltemps,)
+       
+        let longArray = longString.split(", ")
+        let noDuplicates = [...new Set(longArray)]
+        
+        try {
+            noDuplicates.forEach(temp => Temperament.create({name: temp}))
+           
+            res.send(tempsDB)
+           
+           
+        } 
+        catch {
+                res.status(404).send('no en 1')
+            }
+    } else {
+        try {
+            res.json(tempsDB)
+            } 
+        catch {
+                res.status(404).send('no en 2')
+            }
+        }
+        
+})
+        
+//?----------------------- POST DOG ---------------------------------------
+
+router.post('/dog', async (req, res) => {
+ const { name, weight, height, life_span } = req.body
+ if(!name || !weight || !height) {
+    res.send('incomplete information')
+ } else {
+    try {
+        const newDog = {
+            name: name,
+            weight: weight,
+            height: height,
+            life_span: life_span
+        }
+        Dog.create(newDog)
+        .then( response => {
+            res.send(response)
+        })
+    } catch (error) {
+        res.send(error)
+    }
+   
+ }
+
+})
+    
+
+
+
+
+
         
       
 
 module.exports = router;
+
