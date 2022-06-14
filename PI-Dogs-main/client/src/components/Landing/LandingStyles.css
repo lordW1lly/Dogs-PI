@@ -1,0 +1,14 @@
+.flex {
+    display: flex;
+    justify-content: center;
+}
+
+.bou {
+/*     background-image: url("https://cdn.dribbble.com/users/2693097/screenshots/11088702/media/3dfc523aaff4ef2cffab128bdff76ca8.jpg?compress=1&resize=768x576&vertical=top")
+ */
+ display: flex;
+ justify-content: center;
+}
+body {
+    background-image: url(./images/perritosLanding.webp);
+}
