@@ -112,9 +112,9 @@ router.get('/temperament', async (req,res) => {
         let noDuplicates = [...new Set(longArray)]
         
         try {
-            noDuplicates.forEach(temp => Temperament.create({name: temp}))
+            await noDuplicates.forEach(temp => Temperament.create({name: temp}))
            
-            res.send(tempsDB)
+           return res.send(tempsDB)
            
            
         } 
@@ -123,7 +123,7 @@ router.get('/temperament', async (req,res) => {
             }
     } else {
         try {
-            res.json(tempsDB)
+            res.send(tempsDB)
             } 
         catch {
                 res.status(404).send('no en 2')
