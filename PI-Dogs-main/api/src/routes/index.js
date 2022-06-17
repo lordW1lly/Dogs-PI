@@ -28,6 +28,7 @@ router.get('/dogs', async (req,res) => {
         try { //                              https://api.thedogapi.com/v1/breeds?api_key=c28e9da8-8fe1-4d7d-8c0e-023aaa80d78d  
             const allDogs = (await axios.get(`https://api.thedogapi.com/v1/breeds?${apiKey}`)).data.map( d => {
                 return {
+                    id: d.id,
                     image: d.image.url,
                     name: d.name,
                     temperament: d.temperament,

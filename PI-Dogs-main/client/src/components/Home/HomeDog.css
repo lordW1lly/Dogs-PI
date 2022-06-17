@@ -1,0 +1,9 @@
+.individual {
+    display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.breedPicture {
+    display: flex;
+}

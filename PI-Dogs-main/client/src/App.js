@@ -18,7 +18,7 @@ function App() {
             <Route exact path="/dogs" component={HomeDogs} />
             <Route path="/dogs/:id" component={DogDetail} />
             <Route  exact path="/dog" component={DogCreate}/>
-            <Route path="*" componen={HomeDogs}/>
+            <Route path="*" component={HomeDogs}/>
           </Switch>
       </React.Fragment>
   );
