@@ -1,0 +1,18 @@
+.individual {
+    display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  border: 5px solid black;
+  padding: 20px;
+  margin: 10px auto;
+}
+
+.breedPicture {
+    display: flex;
+    border: 5px solid black;
+    justify-content: center;
+}
+
+.dogInfo {
+  justify-content: center;
+}
