@@ -27,7 +27,7 @@ export default function HomeDogs () {
                     
                     <li className="dogInfo">
                         <div className="breedPicture">
-                            <img src={dog.image}></img>
+                            <img src={dog.image} alt="no img found"></img>
                             </div>
                         <h3>{dog.name}</h3>
                         <p>temperament: {dog.temperament}</p>

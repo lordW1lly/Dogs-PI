@@ -10,9 +10,10 @@ export default  function rootReducer(state = initialState, action) {
                 ...state,
                 dogsLoaded: action.payload
             }
-        case 'RESET':
+        case 'SEARCH_DOG':
             return {
-                dogsLoaded: []
+               // ...state,
+                dogsLoaded: action.payload
             }    
         default:
             return state    
