@@ -10,10 +10,10 @@ export default function HomeDogs () {
     const dogs = useSelector(state => state.dogsLoaded)
     
     
-    useEffect( () => {
+    useEffect( async () => {
      dispatch(getDogs())
      //console.log('entro useEffect')
-    },[dogs])
+    },[])
     
 
     return (
