@@ -1,0 +1,18 @@
+.navbar {
+    height: 56px;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background-color: #303236;
+    display: flex;
+    justify-content:first baseline;
+    align-items: center;
+    padding: 10px 30px;
+    box-sizing: border-box;
+    margin:10px;
+}
+
+.createbreedbtn {
+    margin:auto
+
+}

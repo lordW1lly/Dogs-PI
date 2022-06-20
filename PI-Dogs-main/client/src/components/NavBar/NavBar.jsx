@@ -1,10 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { SearchBar } from '../SearchBar/SearchBar';
+import './NavBar.css';
 
 export default function NavBar() {
     return (
-        <nav>
+        <nav className="navbar navbar-dark">
             {/* <header> */}
             <button>
                 <Link exact to="/dogs" >Home</Link>
@@ -12,7 +13,7 @@ export default function NavBar() {
             <button>
                 <Link to="/dog" >Create Breed</Link>
                 </button>
-            <SearchBar/>    
+            <SearchBar className="SearchBAr"/>    
 
         {/* </header> */}
         </nav>
