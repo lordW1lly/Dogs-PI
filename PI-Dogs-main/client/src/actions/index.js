@@ -22,6 +22,15 @@ export function searchDog(name) {
         })
     }
 }
+export function getDogID(id) {
+    return async (dispatch) => { 
+        let dogID = (await axios.get(`http://localhost:3001/dogs/${id}`)).data
+        dispatch({
+            type: "GET_DOG_ID",
+            payload: dogID
+        })
+    }
+}
 /* export  function reset() {
     dispatch({
         type: "RESET"

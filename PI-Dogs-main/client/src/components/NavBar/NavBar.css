@@ -6,7 +6,7 @@
     background-color: #303236;
     display: flex;
     justify-content:first baseline;
-    align-items: center;
+    align-items:flex-start;
     padding: 10px 30px;
     box-sizing: border-box;
     margin:10px;
