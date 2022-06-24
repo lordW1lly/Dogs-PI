@@ -16,6 +16,9 @@
     height: 400px;
     display: flexbox;
 }
+/* img {
+  width:fit-content
+} */
 
 .dogInfo {
   justify-content:space-around;

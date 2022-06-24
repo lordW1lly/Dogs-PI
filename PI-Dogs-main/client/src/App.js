@@ -2,7 +2,7 @@ import './App.css';
 import React from 'react';
 import { Route } from 'react-router-dom';
 import NavBar from './components/NavBar/NavBar';
-import DogCreate from './components/DogCreate/DogCreate';
+import Form from './components/Form/Form';
 import DogDetail from './components/DogDetail/DogDetail';
 import HomeDogs from './components/Home/HomeDogs';
 import LandingComponent from './components/Landing/LandingPage';
@@ -17,7 +17,7 @@ function App() {
             <Route exact path="/" component={LandingComponent} />
             <Route exact path="/dogs" component={HomeDogs} />
             <Route path="/dogs/:id" component={DogDetail} />
-            <Route  exact path="/dog" component={DogCreate}/>
+            <Route  exact path="/dog" component={Form}/>
             <Route path="*" component={HomeDogs}/>
           </Switch>
       </React.Fragment>

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from 'react-router-dom';
-import {getDogs} from "../../actions";
+import {getDogs, reset} from "../../actions";
 //import { useDispatch } from "react-redux";
 import  './HomeDogs.css'
 
@@ -27,6 +27,14 @@ export default function HomeDogs () {
      dispatch(getDogs())
      //console.log('entro useEffect')
     },[])
+
+    useEffect(  () =>  {
+        return () => {
+
+            dispatch(reset())
+        }
+        //console.log('entro useEffect')
+       },[])
     
 
     return (
@@ -42,8 +50,9 @@ export default function HomeDogs () {
                         <div className="breedPicture">
                             <img src={dog.image} alt="no img found"></img>
                         </div>
-                        
+                        <Link to={`/dogs/${dog.id}`}>
                         <h3>{dog.name}</h3>
+                        </Link>
                         
                         <p>{dog.temperament}</p>
                         <p>{dog.weight}</p> 

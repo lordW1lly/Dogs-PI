@@ -31,9 +31,12 @@ export function getDogID(id) {
         })
     }
 }
-/* export  function reset() {
-    dispatch({
-        type: "RESET"
+export  function reset() {
+    return (dispatch) =>{
+        dispatch({
+            type: "RESET"
+        }
+        )
     }
-    )
-} */
+    
+}
