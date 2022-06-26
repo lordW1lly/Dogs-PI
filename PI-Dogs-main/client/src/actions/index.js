@@ -31,6 +31,17 @@ export function getDogID(id) {
         })
     }
 }
+
+export function getTemperaments() {
+    return async (dispatch) => {
+        let dogTemperaments = (await axios.get('http://localhost:3001/temperament')).data
+        dispatch({
+            type: "GET_TEMPERAMENTS",
+            payload: dogTemperaments
+        })
+    }
+}
+
 export  function reset() {
     return (dispatch) =>{
         dispatch({

@@ -35,6 +35,7 @@ router.get('/dogs', async (req,res) => {
                     weight: d.weight.metric+' kg'
                 }
             })
+            const dogsCreated = await Dog.findAll()
             res.send(allDogs);
         } catch {
             res.status(404).send('error en 1')
@@ -43,6 +44,7 @@ router.get('/dogs', async (req,res) => {
         try {
             const dogName = (await axios.get(`https://api.thedogapi.com/v1/breeds/search?q=${name}&${apiKey}`)).data.map( p => {
                 return {
+                    id: p.id,
                     image: p.image?.url, //! porque no trae la url??
                     name: p.name,
                     temperament: p.temperament,
@@ -79,8 +81,8 @@ router.get('/dogs/:id', async (req, res) => {
                 image: breedID[0].image.url,
                 name: breedID[0].name,
                 temperament: breedID[0].temperament,
-                weight: breedID[0].weight.metric+' kgs.'+'  or '+breedID[0].weight.imperial+' lbs.',
-                height: breedID[0].height.metric+' cms.'+'  or '+breedID[0].height.imperial+' inches.',
+                weight: breedID[0].weight.metric+' kgs.',
+                height: breedID[0].height.metric+' cms.',
                 life_span: breedID[0].life_span
             }
             res.send(breed)
@@ -136,7 +138,7 @@ router.get('/temperament', async (req,res) => {
 //?----------------------- POST DOG ---------------------------------------
 
 router.post('/dog', async (req, res) => {
- const { name, weight, height, life_span } = req.body
+ const { name, weight, height, life_span, temperament } = req.body
  if(!name || !weight || !height) {
     res.send('incomplete information')
  } else {
@@ -145,7 +147,8 @@ router.post('/dog', async (req, res) => {
             name: name,
             weight: weight,
             height: height,
-            life_span: life_span
+            life_span: life_span,
+            temperament: temperament
         }
         Dog.create(newDog)
         .then( response => {

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from 'react-router-dom';
-import {getDogs, reset} from "../../actions";
+import {getDogs, reset, getTemperaments} from "../../actions";
 //import { useDispatch } from "react-redux";
 import  './HomeDogs.css'
 
@@ -25,10 +25,11 @@ export default function HomeDogs () {
       
     useEffect(  () => {
      dispatch(getDogs())
+     dispatch(getTemperaments())
      //console.log('entro useEffect')
     },[])
 
-    useEffect(  () =>  {
+    useEffect(() =>  {
         return () => {
 
             dispatch(reset())

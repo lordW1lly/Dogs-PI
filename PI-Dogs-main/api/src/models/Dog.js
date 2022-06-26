@@ -27,6 +27,10 @@ module.exports = (sequelize) => {
     },
     lifeSpan: {
       type: DataTypes.STRING,
+    },
+    temperament: {
+      type: DataTypes.STRING,
+      
     }
 
 
