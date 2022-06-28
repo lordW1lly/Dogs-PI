@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { SearchBar } from '../SearchBar/SearchBar';
 import './NavBar.css';
 
 export default function NavBar() {
+    const [currentPage, setPage] = useState(1)
     return (
         <nav className="navbar navbar-dark">
             {/* <header> */}
@@ -13,7 +14,7 @@ export default function NavBar() {
             <button className='createbreedbtn'>
                 <Link to="/dog" >Create Breed</Link>
                 </button>
-            <SearchBar className="SearchBAr"/>    
+            <SearchBar  setPage={setPage} className="SearchBAr"/>    
 
         {/* </header> */}
         </nav>

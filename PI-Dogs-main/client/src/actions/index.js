@@ -1,4 +1,6 @@
 import axios from 'axios';
+import { bindActionCreators } from 'redux';
+
 
 
  export  function getDogs() {
@@ -50,4 +52,71 @@ export  function reset() {
         )
     }
     
+}
+
+export function createDog(dog) {
+    return async (dispatch) => {
+        try {
+            let newDog = {
+                name: dog.name,
+                height: `${dog.minHeight} - ${dog.maxHeight}`,
+                weight: `${dog.minWeight} - ${dog.maxWeight}`,
+                temperament: dog.temperament,
+                life_span: `${dog.minLifeSpan} - ${dog.maxLifeSpan}`
+            }
+            let resp = ''
+            await axios.post('http://localhost:3001/dog', newDog)
+            .then(response => resp = response.data)
+            return dispatch({
+                type: 'CREATE_DOG',
+                payload: resp
+            })
+
+        } catch(error) {
+            return console.log(error)
+        }
+    }
+}
+
+export function filterByTemps(temperament) {
+    return {
+        type: "FILTER_TEMPERAMENTS",
+        payload: temperament
+    }
+}
+
+export function orderNameAZ() {
+    return {
+        type: "ORDER_A_Z"
+    }
+}
+
+export function orderNameZA () {
+    return {
+        type: "ORDER_Z_A"
+    }
+}
+
+export function orderWeightASC () {
+    return {
+        type: 'ORDER_WEIGHT_ASC'
+    }
+}
+
+export function orderWeightDESC () {
+    return {
+        type: 'ORDER_WEIGHT_DESC'
+    }
+}
+
+export function filterByOrigin (payload) {
+    try {
+        return {
+            type: 'FILTER_ORIGIN',
+            payload: payload
+        }
+        
+    } catch (error) {
+        return alert('failed filtering origin')
+    }
 }

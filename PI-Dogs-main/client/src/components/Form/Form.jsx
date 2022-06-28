@@ -2,6 +2,7 @@
 import react, { useEffect } from "react";
 import { useState } from "react";
 import './Form.css'
+import { createDog } from "../../actions";
 
 import { useSelector, useDispatch } from "react-redux";
 /* import { getTemperaments } from "../../actions";
@@ -62,6 +63,7 @@ export default function Form () {
 
 
     const dogsTemperaments = useSelector( state => state.temperaments)
+    const dispatch = useDispatch()
     /* const dispatch = useDispatch() */
     const [temperament, setTemperament] = useState([])
     const [input, setInput] = useState({
@@ -76,6 +78,10 @@ export default function Form () {
         lifeSpan:'',
         minLifeSpan:'',
         maxLifeSpan:'',
+        button: {
+            class: 'inactive',
+            disabled: true
+        }
         
     })
 
@@ -107,18 +113,24 @@ export default function Form () {
     let newtemps = temperament.filter(t => t !== e.target.value)
     setTemperament(newtemps)
         
-}     
+}
+
+    
    
 
-   let newBreed = {
+/*    let newBreed = {
     name: input.name,
     weight: input.minWeight.concat(' - ',input.maxWeight),
     height: input.minHeight.concat(' - ',input.maxHeight),
-    temperament: []
-}    
+    temperament: temperament.map( t => t.concat)
+}  */
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        dispatch(createDog(input))
+    }
         
     return (
-        <form>
+        <form onSubmit={handleSubmit}>
 
             <div className="field">
                 <label htmlFor="name">Name :</label>
@@ -185,7 +197,7 @@ export default function Form () {
               
             </div>
           </div>
-                    <input type="submit"  value="Submit"/>
+                    <input type="submit"  onSubmit={handleSubmit}  value="Submit"/>
 
 
           {/*  {

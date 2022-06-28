@@ -12,6 +12,13 @@ const apiKey = 'api_key=c28e9da8-8fe1-4d7d-8c0e-023aaa80d78d'
 
 const router = Router();
 
+function weightCheck(weight) {
+    let [min, max] = weight.split("-");
+    min = isNaN(min) ? "0" : parseInt(min);
+    max = isNaN(max) ? "0" : parseInt(max);
+    return [min, ' - '+max];
+  }
+
 // Configurar los routers
 // Ejemplo: router.use('/auth', authRouter);
 
@@ -32,11 +39,12 @@ router.get('/dogs', async (req,res) => {
                     image: d.image.url,
                     name: d.name,
                     temperament: d.temperament,
-                    weight: d.weight.metric+' kg'
+                    weight: weightCheck(d.weight.metric) //!! kg comentados/* +' kg' */
                 }
             })
             const dogsCreated = await Dog.findAll()
-            res.send(allDogs);
+            const totalDogs = allDogs.concat(dogsCreated)
+            res.send(totalDogs);
         } catch {
             res.status(404).send('error en 1')
         }
@@ -48,7 +56,7 @@ router.get('/dogs', async (req,res) => {
                     image: p.image?.url, //! porque no trae la url??
                     name: p.name,
                     temperament: p.temperament,
-                    weight: p.weight.metric+' kg'
+                    weight: p.weight.metric/* +' kg' */ //!! kg comentados
                 }
             })
             if(dogName.length < 1) {
@@ -81,8 +89,8 @@ router.get('/dogs/:id', async (req, res) => {
                 image: breedID[0].image.url,
                 name: breedID[0].name,
                 temperament: breedID[0].temperament,
-                weight: breedID[0].weight.metric+' kgs.',
-                height: breedID[0].height.metric+' cms.',
+                weight: breedID[0].weight.metric/* +' kgs.' */,
+                height: breedID[0].height.metric/* +' cms.' */,
                 life_span: breedID[0].life_span
             }
             res.send(breed)

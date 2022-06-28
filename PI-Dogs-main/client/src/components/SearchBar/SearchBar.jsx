@@ -4,10 +4,21 @@ import  { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { searchDog } from "../../actions";
 
-export  function SearchBar() {
+export  function SearchBar({setPage}) {
 
     const dispatch = useDispatch();
     const [name, setName] = useState()
+    const handleInput = (e) => {
+        setName(e.target.value)
+        e.preventDefault()
+        setPage(1)
+    }
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        dispatch(searchDog(name))
+        setName("")
+        setPage(1)
+    }
 
     return(
         <div className="SearchBar">
@@ -22,9 +33,10 @@ export  function SearchBar() {
                 type="text"
                 placeholder="Breed.."
                 value={name}
-                onChange={ e => setName(e.target.value)}
+                onChange={handleInput}
                 />
-                <input type="submit" value="Search"/>
+                <button type="submit" className="searchBtn" onClick={handleSubmit}></button>
+                {/* <input type="submit" value="Search"/> */}
                 
             </form>
             
