@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from 'react-router-dom';
 import {getDogs, reset, getTemperaments, filterByTemps,
-     orderNameZA, orderNameAZ, orderWeightDESC, orderWeightASC, filterByOrigin} from "../../actions";
+     orderNameZA, orderNameAZ, orderWeightDESC, orderWeightASC, filterByApi, filterByDB, allOrigins} from "../../actions";
 
 import  './HomeDogs.css'
 
@@ -27,7 +27,7 @@ export default function HomeDogs () {
         setPaginate((prevValue) => prevValue + 8);
         setBase((prevBase) => prevBase + 8)
     };
-    console.log(nextPage)
+    
 
     const previousPage = () => {
         
@@ -69,12 +69,21 @@ export default function HomeDogs () {
     }
 
     const orderOrigin = (e) => {
+
+        if(e.target.value === 'API') {
+            return dispatch(filterByApi())
+        }
+
+        if(e.target.value === 'D.Base') {
+            return dispatch(filterByDB())
+        }
         
-        e.preventDefault()
-        dispatch(filterByOrigin(e.target.value))
+        if(e.target.value === 'allOrigins') {
+            return dispatch(allOrigins())
+        }
     }
 
-    const selects = 'DEFAULT'
+    
 
     return (
         <div>
@@ -89,9 +98,9 @@ export default function HomeDogs () {
               </select>
 
               <select onChange={orderOrigin} defaultValue='allOrigins'>
-                    <option value='allOrigins'  >All Origins</option>
-                    <option value='DOG_API'>API</option>
-                    <option value='DOG_DB'>Created</option>
+                    <option value='allOrigins'>All Origins</option>
+                    <option value='API'>API</option>
+                    <option value='D.Base'>Created</option>
               </select>
 
               <select onChange={orderWeight} value=''>
@@ -128,7 +137,7 @@ export default function HomeDogs () {
                         </Link>
                         
                         <p>{dog.temperament}</p>
-                        <p>{dog.weight}</p> 
+                        <p>{dog.weight} kgs</p> 
                     </li>
                     </div>
                     

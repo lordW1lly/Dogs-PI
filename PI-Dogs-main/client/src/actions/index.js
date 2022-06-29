@@ -54,15 +54,22 @@ export  function reset() {
     
 }
 
-export function createDog(dog) {
+export function createDog(dog, temperament) {
     return async (dispatch) => {
         try {
-            let newDog = {
+            /* let newDog = {
                 name: dog.name,
                 height: `${dog.minHeight} - ${dog.maxHeight}`,
                 weight: `${dog.minWeight} - ${dog.maxWeight}`,
+                temperament: temperament.temperament,
+                lifeSpan: `${dog.minLifeSpan} - ${dog.maxLifeSpan}`
+            } */
+            let newDog = {
+                name: dog.name,
+                height: dog.height,
+                weight: dog.weight,
                 temperament: dog.temperament,
-                life_span: `${dog.minLifeSpan} - ${dog.maxLifeSpan}`
+                lifeSpan: dog.lifeSpan
             }
             let resp = ''
             await axios.post('http://localhost:3001/dog', newDog)
@@ -109,7 +116,26 @@ export function orderWeightDESC () {
     }
 }
 
-export function filterByOrigin (payload) {
+export function filterByApi () {
+    return {
+        type: 'FILTER_BY_API',
+        
+    }
+}
+
+export function filterByDB () {
+    return {
+        type: 'FILTER_BY_DB',
+        
+    }
+}
+
+export function allOrigins() {
+    return {
+        type: 'ALL_ORIGINS'
+    }
+}
+/* export function filterByOrigin (payload) {
     try {
         return {
             type: 'FILTER_ORIGIN',
@@ -119,4 +145,4 @@ export function filterByOrigin (payload) {
     } catch (error) {
         return alert('failed filtering origin')
     }
-}
+} */

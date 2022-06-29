@@ -23,9 +23,9 @@ export default function DogDetail() {
             </div>
         <ul>
             <h3>{dogID.temperament}</h3>
-            <h3>Weight: {dogID.weight}</h3>
-            <h3>Height: {dogID.height}</h3>
-            <h3>{dogID.life_span}</h3>
+            <h3>Weight: {dogID.weight} kgs</h3>
+            <h3>Height: {dogID.height} cms</h3>
+            <h3>{dogID.lifeSpan}</h3>
 
         </ul>
 

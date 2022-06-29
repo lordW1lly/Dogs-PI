@@ -118,15 +118,18 @@ export default function Form () {
     
    
 
-/*    let newBreed = {
+let newDog = {
     name: input.name,
-    weight: input.minWeight.concat(' - ',input.maxWeight),
-    height: input.minHeight.concat(' - ',input.maxHeight),
-    temperament: temperament.map( t => t.concat)
-}  */
+    height: `${input.minHeight} - ${input.maxHeight}`,
+    weight: `${input.minWeight} - ${input.maxWeight}`,
+    temperament: `${temperament}`,
+    lifeSpan: `${input.minLifeSpan} - ${input.maxLifeSpan}`
+}
+console.log(newDog)
+
     const handleSubmit = (e) => {
         e.preventDefault()
-        dispatch(createDog(input))
+        dispatch(createDog(newDog))
     }
         
     return (

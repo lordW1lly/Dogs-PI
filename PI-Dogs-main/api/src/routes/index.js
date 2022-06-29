@@ -33,6 +33,8 @@ router.get('/dogs', async (req,res) => {
     const { name } = req.query;
     if(!name) {
         try { //                              https://api.thedogapi.com/v1/breeds?api_key=c28e9da8-8fe1-4d7d-8c0e-023aaa80d78d  
+            const dogsCreated = await Dog.findAll()
+            console.log(dogsCreated)
             const allDogs = (await axios.get(`https://api.thedogapi.com/v1/breeds?${apiKey}`)).data.map( d => {
                 return {
                     id: d.id,
@@ -42,14 +44,17 @@ router.get('/dogs', async (req,res) => {
                     weight: weightCheck(d.weight.metric) //!! kg comentados/* +' kg' */
                 }
             })
-            const dogsCreated = await Dog.findAll()
-            const totalDogs = allDogs.concat(dogsCreated)
-            res.send(totalDogs);
+            //const totalDogs = allDogs.concat(dogsCreated)
+            dogsCreated.map( d => allDogs.push(d))
+            //allDogs.push(dogsCreated)
+            console.log(allDogs)
+            res.send(allDogs);
         } catch {
             res.status(404).send('error en 1')
         }
     } else {
         try {
+            //const dogsCreated = await Dog.findAll()
             const dogName = (await axios.get(`https://api.thedogapi.com/v1/breeds/search?q=${name}&${apiKey}`)).data.map( p => {
                 return {
                     id: p.id,
@@ -59,6 +64,8 @@ router.get('/dogs', async (req,res) => {
                     weight: p.weight.metric/* +' kg' */ //!! kg comentados
                 }
             })
+            //const dogApi = 
+            //dogsCreated.map( d => allDogs.push(d))
             if(dogName.length < 1) {
                 res.send('no breed found')
             } else {
@@ -91,7 +98,7 @@ router.get('/dogs/:id', async (req, res) => {
                 temperament: breedID[0].temperament,
                 weight: breedID[0].weight.metric/* +' kgs.' */,
                 height: breedID[0].height.metric/* +' cms.' */,
-                life_span: breedID[0].life_span
+                lifeSpan: breedID[0].life_span
             }
             res.send(breed)
             console.log(breed)
@@ -146,7 +153,7 @@ router.get('/temperament', async (req,res) => {
 //?----------------------- POST DOG ---------------------------------------
 
 router.post('/dog', async (req, res) => {
- const { name, weight, height, life_span, temperament } = req.body
+ const { name, weight, height, lifeSpan, temperament } = req.body
  if(!name || !weight || !height) {
     res.send('incomplete information')
  } else {
@@ -155,7 +162,7 @@ router.post('/dog', async (req, res) => {
             name: name,
             weight: weight,
             height: height,
-            life_span: life_span,
+            lifeSpan: lifeSpan,
             temperament: temperament
         }
         Dog.create(newDog)

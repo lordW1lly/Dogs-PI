@@ -107,52 +107,78 @@ function order(arr, prop) {
                 ...state,
                 dogsLoaded: orderedLowest
             }
+
         case 'ORDER_WEIGHT_DESC':
             let orderedHighest = order([...state.dogsLoaded], 'weight').reverse()
             return {
                 ...state,
                 dogsLoaded: orderedHighest
             }
+
         case 'CREATE_DOG':
             return {
                 ...state,
                 dogsCreated: action.payload
             }
-        case 'FILTER_ORIGIN':
-            const value = state.dogsLoaded
-            console.log(value)
-            const origin =
-            action.payload === 'allOrigins'
-            ? value
-            : value.filter(dogs => {
-                /* dogs.filter((e) => {
-                    
-                }) */
-                if(dogs.id === 'number') {
-                    console.log('primer if')
-                    return dogs 
-                } else if(dogs.id === 'string') {
-                    return dogs
-            
-                }
-            })
-            console.log(origin)
-        //    console.log(value)
-            // const filterByOrigin = state.dogsLoaded.filter( dogs => {
-            //     console.log(dogs)
-            //     let resultado = 
-                
-            //     // value == 'DOG_API' 
-            //     // ? dogs.id == Number
-            //     // : value == 'DOG_DB'
-            //     // ? dogs.id == String
-            //     // : false
-            //     return resultado 
-            // }) 
+
+        case 'FILTER_BY_API':
+            let dogos = [...state.dogsLoaded]
+            let dogsApi = dogos.filter(d => d.id.length !== 36)
+            console.log(dogsApi)
             return {
                 ...state,
-                dogsLoaded: origin
-            }              
+                dogsLoaded: dogsApi
+            }
+        case 'FILTER_BY_DB':
+            let doggy = [...state.dogsLoaded]
+            let dogsDB = doggy.filter(d => d.id.length === 36)
+            return {
+                ...state,
+                dogsLoaded: dogsDB
+            }
+        case 'ALL_ORIGINS':
+            return {
+                ...state
+            }        
+            
+
+
+
+        // case 'FILTER_ORIGIN':
+        //     const value = state.dogsLoaded
+        //     console.log(value)
+        //     const origin =
+        //     action.payload === 'allOrigins'
+        //     ? value
+        //     : value.filter(dogs => {
+        //         /* dogs.filter((e) => {
+        //             jaja
+        //         }) */
+        //         if(dogs.id === 'number') {
+        //             console.log('primer if')
+        //             return dogs 
+        //         } else if(dogs.id === 'string') {
+        //             return dogs
+            
+        //         }
+        //     })
+        //     console.log(origin)
+        // //    console.log(value)
+        //     // const filterByOrigin = state.dogsLoaded.filter( dogs => {
+        //     //     console.log(dogs)
+        //     //     let resultado = 
+                
+        //     //     // value == 'DOG_API' 
+        //     //     // ? dogs.id == Number
+        //     //     // : value == 'DOG_DB'
+        //     //     // ? dogs.id == String
+        //     //     // : false
+        //     //     return resultado 
+        //     // }) 
+        //     return {
+        //         ...state,
+        //         dogsLoaded: origin
+        //     }              
                               
         default:
             return state    
