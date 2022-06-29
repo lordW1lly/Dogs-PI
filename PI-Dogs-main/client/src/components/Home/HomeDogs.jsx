@@ -68,6 +68,8 @@ export default function HomeDogs () {
         }
     }
 
+   
+
     const orderOrigin = (e) => {
 
         if(e.target.value === 'API') {
@@ -96,6 +98,8 @@ export default function HomeDogs () {
                     <option value='Asc'>Ascendente</option>
                     <option value='Desc'>Descendente</option>
               </select>
+
+            
 
               <select onChange={orderOrigin} defaultValue='allOrigins'>
                     <option value='allOrigins'>All Origins</option>
@@ -137,7 +141,8 @@ export default function HomeDogs () {
                         </Link>
                         
                         <p>{dog.temperament}</p>
-                        <p>{dog.weight} kgs</p> 
+                        <p>{dog.weight} kgs</p>
+                        <p>{dog.height}</p> 
                     </li>
                     </div>
                     

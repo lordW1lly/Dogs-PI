@@ -19,6 +19,7 @@ function weightCheck(weight) {
     return [min, ' - '+max];
   }
 
+
 // Configurar los routers
 // Ejemplo: router.use('/auth', authRouter);
 
@@ -41,20 +42,25 @@ router.get('/dogs', async (req,res) => {
                     image: d.image.url,
                     name: d.name,
                     temperament: d.temperament,
-                    weight: weightCheck(d.weight.metric) //!! kg comentados/* +' kg' */
+                    weight: weightCheck(d.weight.metric), //!! kg comentados/* +' kg' */
+                    
+                    
+                
                 }
             })
             //const totalDogs = allDogs.concat(dogsCreated)
             dogsCreated.map( d => allDogs.push(d))
             //allDogs.push(dogsCreated)
-            console.log(allDogs)
+            
             res.send(allDogs);
         } catch {
             res.status(404).send('error en 1')
         }
     } else {
         try {
-            //const dogsCreated = await Dog.findAll()
+            dogsCreated = await Dog.findAll()
+            dogsCreatedFiltered = dogsCreated.filter(dc => dc.name.includes(`${name}`))
+
             const dogName = (await axios.get(`https://api.thedogapi.com/v1/breeds/search?q=${name}&${apiKey}`)).data.map( p => {
                 return {
                     id: p.id,
@@ -64,8 +70,10 @@ router.get('/dogs', async (req,res) => {
                     weight: p.weight.metric/* +' kg' */ //!! kg comentados
                 }
             })
+            dogsCreatedFiltered.map( dc => dogName.push(dc))
             //const dogApi = 
             //dogsCreated.map( d => allDogs.push(d))
+            console.log(dogName)
             if(dogName.length < 1) {
                 res.send('no breed found')
             } else {
@@ -85,10 +93,27 @@ Los campos mostrados en la ruta principal para cada raza (imagen, nombre y tempe
 
 router.get('/dogs/:id', async (req, res) => {
     const { id } = req.params;
+    const dogsDB = await Dog.findAll();
+    // let dogsDBid = dogsDB.filter( dbase => dbase.id == id)
+    // console.log(dogsDBid)
     let breedID = (await axios.get(`https://api.thedogapi.com/v1/breeds?${apiKey}`)).data.filter( b => b.id == id)
-    
+    //dogsDBid.map(dog => breedID.push(dog))
     if(breedID.length < 1) {
-        res.send('no id found')
+        let dogsDBid = dogsDB.filter( dbase => dbase.id == id)
+        try {
+            let dogDB = {
+                name: dogsDBid[0].name,
+                height: dogsDBid[0].height,
+                temperament: dogsDBid[0].temperament,
+                weight: dogsDBid[0].weight,
+                lifeSpan: dogsDBid[0].lifeSpan
+
+            }
+            res.send(dogDB)
+        } catch (error) {
+            res.status(404).send('fallo')
+        }
+        
     } else {
         try {
            

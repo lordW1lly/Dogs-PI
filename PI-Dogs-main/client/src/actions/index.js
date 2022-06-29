@@ -1,11 +1,13 @@
 import axios from 'axios';
-import { bindActionCreators } from 'redux';
+
 
 
 
  export  function getDogs() {
     return async function(dispatch) {
+        // const dogsCreated = await Dog.findAll()
         let allDogs = (await axios.get(`http://localhost:3001/dogs`)).data;
+        // dogsCreated.map( dc => allDogs.push(dc))
        //let  allDogsjson = allDogs.toJson()
         dispatch({
             type:"GET_DOGS",
@@ -135,14 +137,4 @@ export function allOrigins() {
         type: 'ALL_ORIGINS'
     }
 }
-/* export function filterByOrigin (payload) {
-    try {
-        return {
-            type: 'FILTER_ORIGIN',
-            payload: payload
-        }
-        
-    } catch (error) {
-        return alert('failed filtering origin')
-    }
-} */
+

@@ -115,6 +115,19 @@ function order(arr, prop) {
                 dogsLoaded: orderedHighest
             }
 
+        case 'ORDER_HEIGHT_ASC':
+            return {
+                ...state,
+                dogsLoaded: order([...state.dogsLoaded], 'height')
+            }
+
+        case 'ORDER_HEIGHT_DESC':
+            return {
+                ...state,
+                dogsLoaded: order([...state.dogsLoaded], 'height').reverse()
+            }    
+                
+
         case 'CREATE_DOG':
             return {
                 ...state,

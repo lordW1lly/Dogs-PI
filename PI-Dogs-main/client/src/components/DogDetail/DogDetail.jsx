@@ -14,7 +14,7 @@ export default function DogDetail() {
        },[])
 
    return(
-    <div>
+    <div className="dogDetail">
         <ul>
         <h1>{dogID.name}</h1>
             <div className="dogImg">
