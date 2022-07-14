@@ -93,7 +93,7 @@ export default function HomeDogs () {
             <div className="selectTemp">
                 <button onClick={()=> dispatch(getDogs())}>Clear Selection</button>
                 
-                <select onChange={orderBreed} value=''>
+                <select onChange={ orderBreed } value=''>
                     <option value=''  >Order by Name</option>
                     <option value='Asc'>Ascendente</option>
                     <option value='Desc'>Descendente</option>
@@ -101,7 +101,7 @@ export default function HomeDogs () {
 
             
 
-              <select onChange={orderOrigin} defaultValue='allOrigins'>
+              <select onChange={ orderOrigin } defaultValue='allOrigins'>
                     <option value='allOrigins'>All Origins</option>
                     <option value='API'>API</option>
                     <option value='D.Base'>Created</option>
@@ -142,7 +142,7 @@ export default function HomeDogs () {
                         
                         <p>{dog.temperament}</p>
                         <p>{dog.weight} kgs</p>
-                        <p>{dog.height}</p> 
+                        <p>{dog.height} cms</p> 
                     </li>
                     </div>
                     

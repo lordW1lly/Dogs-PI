@@ -5,22 +5,7 @@ const initialState = {
     dogsCreated: [],
 }
 
-/* function order(array, prop) {
-    let ordered = []
-    let orderedZA = []
-    if(prop === 'name') {
-        ordered = array.sort(function (a, b) {
-            if(a.name < b.name) {
-                return -1
-            }
-            if(a.name > b.name) {
-                return 1
-            }
-            return 0
-        })
-    }
-  
-} */
+
 
 function order(arr, prop) {   
     let ordered = [] 
@@ -157,42 +142,6 @@ function order(arr, prop) {
 
 
 
-        // case 'FILTER_ORIGIN':
-        //     const value = state.dogsLoaded
-        //     console.log(value)
-        //     const origin =
-        //     action.payload === 'allOrigins'
-        //     ? value
-        //     : value.filter(dogs => {
-        //         /* dogs.filter((e) => {
-        //             jaja
-        //         }) */
-        //         if(dogs.id === 'number') {
-        //             console.log('primer if')
-        //             return dogs 
-        //         } else if(dogs.id === 'string') {
-        //             return dogs
-            
-        //         }
-        //     })
-        //     console.log(origin)
-        // //    console.log(value)
-        //     // const filterByOrigin = state.dogsLoaded.filter( dogs => {
-        //     //     console.log(dogs)
-        //     //     let resultado = 
-                
-        //     //     // value == 'DOG_API' 
-        //     //     // ? dogs.id == Number
-        //     //     // : value == 'DOG_DB'
-        //     //     // ? dogs.id == String
-        //     //     // : false
-        //     //     return resultado 
-        //     // }) 
-        //     return {
-        //         ...state,
-        //         dogsLoaded: origin
-        //     }              
-                              
         default:
             return state    
 

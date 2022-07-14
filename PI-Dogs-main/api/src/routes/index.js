@@ -35,7 +35,7 @@ router.get('/dogs', async (req,res) => {
     if(!name) {
         try { //                              https://api.thedogapi.com/v1/breeds?api_key=c28e9da8-8fe1-4d7d-8c0e-023aaa80d78d  
             const dogsCreated = await Dog.findAll()
-            console.log(dogsCreated)
+            
             const allDogs = (await axios.get(`https://api.thedogapi.com/v1/breeds?${apiKey}`)).data.map( d => {
                 return {
                     id: d.id,
@@ -60,11 +60,12 @@ router.get('/dogs', async (req,res) => {
         try {
             dogsCreated = await Dog.findAll()
             dogsCreatedFiltered = dogsCreated.filter(dc => dc.name.includes(`${name}`))
+            console.log(dogsCreated)
 
             const dogName = (await axios.get(`https://api.thedogapi.com/v1/breeds/search?q=${name}&${apiKey}`)).data.map( p => {
                 return {
                     id: p.id,
-                    image: p.image?.url, //! porque no trae la url??
+                    image: p.image?.url, 
                     name: p.name,
                     temperament: p.temperament,
                     weight: p.weight.metric/* +' kg' */ //!! kg comentados
@@ -73,7 +74,7 @@ router.get('/dogs', async (req,res) => {
             dogsCreatedFiltered.map( dc => dogName.push(dc))
             //const dogApi = 
             //dogsCreated.map( d => allDogs.push(d))
-            console.log(dogName)
+           // console.log(dogName)
             if(dogName.length < 1) {
                 res.send('no breed found')
             } else {
