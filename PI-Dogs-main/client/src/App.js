@@ -13,7 +13,7 @@ function App() {
     <React.Fragment>
           <NavBar />
           <Switch>
-            {/* <Route path="/dog" component={NavBar}/> */} 
+            {/* <Route path="/dogs" component={NavBar}/> */} 
             <Route exact path="/" component={LandingComponent} />
             <Route exact path="/dogs" component={HomeDogs} />
             <Route path="/dogs/:id" component={DogDetail} />
