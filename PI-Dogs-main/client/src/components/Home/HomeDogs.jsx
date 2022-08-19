@@ -15,17 +15,18 @@ export default function HomeDogs () {
     const [paginate, setPaginate] = useState(8);
     const [base, setBase] = useState(0);
     const [counter, setCounter] = useState(1)
-    const [dogPages] = useState(8)
+    const [dogsInPage] = useState(8)
     
-    const lastDog = counter * dogPages
-    const firstDog = lastDog - dogPages
-    const indexPages = Math.ceil(dogs.length / dogPages)
+    const lastDog = counter * dogsInPage
+    const firstDog = lastDog - dogsInPage
+    const indexPages = Math.ceil(dogs.length / dogsInPage)
+    console.log('soy indexPages:',indexPages)
     
 
     const nextPage = () => {
         
-        setPaginate((prevValue) => prevValue + 8);
-        setBase((prevBase) => prevBase + 8)
+        setPaginate((prevValue) => prevValue + dogsInPage);
+        setBase((prevBase) => prevBase + dogsInPage)
         setCounter((prevValue) => prevValue +1)
     };
     
@@ -127,13 +128,16 @@ export default function HomeDogs () {
                 </select>
                
             </div>
-            <div>
+            <div className="prev&next">
             {
             counter > 1 && <button onClick={previousPage}>Previous Page</button> 
             }
+            {
+
+            }
             </div>
 
-            {/* <button onClick={previousPage}>Previous Page</button> */}
+            
             <button onClick={nextPage}>Next Page</button>
             {
                 dogs.slice(base, paginate).map(dog => (
@@ -156,10 +160,7 @@ export default function HomeDogs () {
                     ))
                     
             }
-             <div>
-                <h1>hola</h1>
-                </div>        
-
+          
         </div>
         
         
