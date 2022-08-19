@@ -17,10 +17,10 @@ export default function HomeDogs () {
     const [counter, setCounter] = useState(1)
     const [dogsInPage] = useState(8)
     
-    const lastDog = counter * dogsInPage
-    const firstDog = lastDog - dogsInPage
+    
+    
     const indexPages = Math.ceil(dogs.length / dogsInPage)
-    console.log('soy indexPages:',indexPages)
+    
     
 
     const nextPage = () => {
@@ -131,14 +131,15 @@ export default function HomeDogs () {
             <div className="prev&next">
             {
             counter > 1 && <button onClick={previousPage}>Previous Page</button> 
-            }
+        }
             {
+            counter < indexPages && <button onClick={nextPage}>Next Page</button>
 
             }
             </div>
 
             
-            <button onClick={nextPage}>Next Page</button>
+            {/* <button onClick={nextPage}>Next Page</button> */}
             {
                 dogs.slice(base, paginate).map(dog => (
                     
