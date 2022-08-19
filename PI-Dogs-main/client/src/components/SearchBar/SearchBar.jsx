@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import './SearchBar.css'
 
 import { useDispatch} from "react-redux";
-import { searchDog } from "../../actions";
+import { searchDog, reset } from "../../actions";
 
 export  function SearchBar({setPage}) {
 
@@ -15,6 +15,7 @@ export  function SearchBar({setPage}) {
     }
     const handleSubmit = (e) => {
         e.preventDefault()
+        dispatch(reset())
         dispatch(searchDog(name))
         setName("")
         setPage(1)
