@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from 'react-router-dom';
 import {getDogs, reset, getTemperaments, filterByTemps,
@@ -26,6 +26,7 @@ export default function HomeDogs () {
         
         setPaginate((prevValue) => prevValue + 8);
         setBase((prevBase) => prevBase + 8)
+        setCounter((prevValue) => prevValue +1)
     };
     
 
@@ -33,6 +34,7 @@ export default function HomeDogs () {
         
         setPaginate((prevValue) => prevValue -8);
         setBase((prevBase) => prevBase -8)
+        setCounter((prevValue) => prevValue -1)
       };  
       
     useEffect(  () => {
@@ -125,8 +127,13 @@ export default function HomeDogs () {
                 </select>
                
             </div>
+            <div>
+            {
+            counter > 1 && <button onClick={previousPage}>Previous Page</button> 
+            }
+            </div>
 
-            <button onClick={previousPage}>Previous Page</button>
+            {/* <button onClick={previousPage}>Previous Page</button> */}
             <button onClick={nextPage}>Next Page</button>
             {
                 dogs.slice(base, paginate).map(dog => (
