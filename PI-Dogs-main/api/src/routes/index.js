@@ -42,15 +42,12 @@ router.get('/dogs', async (req,res) => {
                     image: d.image.url,
                     name: d.name,
                     temperament: d.temperament,
-                    weight: weightCheck(d.weight.metric), //!! kg comentados/* +' kg' */
-                    
-                    
-                
+                    weight: weightCheck(d.weight.metric), 
                 }
             })
-            //const totalDogs = allDogs.concat(dogsCreated)
+            
             dogsCreated.map( d => allDogs.push(d))
-            //allDogs.push(dogsCreated)
+            
             
             res.send(allDogs);
         } catch {
@@ -60,26 +57,26 @@ router.get('/dogs', async (req,res) => {
         try {
             dogsCreated = await Dog.findAll()
             dogsCreatedFiltered = dogsCreated.filter(dc => dc.name.includes(`${name}`))
-            console.log(dogsCreated)
-
-            const dogName = (await axios.get(`https://api.thedogapi.com/v1/breeds/search?q=${name}&${apiKey}`)).data.map( p => {
+            
+            let dogNombre = (await axios.get(`https://api.thedogapi.com/v1/breeds?${apiKey}`)).data.filter(dog => dog.name.toLowerCase().includes(name.toLowerCase())).map(p => {
                 return {
                     id: p.id,
-                    image: p.image?.url, 
+                    image: p.image.url, 
                     name: p.name,
                     temperament: p.temperament,
-                    weight: p.weight.metric/* +' kg' */ //!! kg comentados
+                    weight: p.weight.metric
+
                 }
             })
-            dogsCreatedFiltered.map( dc => dogName.push(dc))
-            //const dogApi = 
-            //dogsCreated.map( d => allDogs.push(d))
-           // console.log(dogName)
-            if(dogName.length < 1) {
+            console.log('soy dogNombre:',dogNombre)
+
+            dogsCreatedFiltered.map( dc => dogNombre.push(dc))
+            
+            if(dogNombre.length < 1) {
                 res.send('no breed found')
             } else {
-                
-                res.send(dogName)
+                console.log(dogNombre)
+                res.send(dogNombre)
             }
         } catch {
             res.status(404).send('error en 2')

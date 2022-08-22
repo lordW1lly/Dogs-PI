@@ -131,7 +131,7 @@ export default function HomeDogs () {
             <div className="prev&next">
             {
             counter > 1 && <button onClick={previousPage}>Previous Page</button> 
-        }
+            }
             {
             counter < indexPages && <button onClick={nextPage}>Next Page</button>
 
@@ -139,7 +139,7 @@ export default function HomeDogs () {
             </div>
 
             
-            {/* <button onClick={nextPage}>Next Page</button> */}
+          
             {
                 dogs.slice(base, paginate).map(dog => (
                     
