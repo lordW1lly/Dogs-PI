@@ -4,7 +4,11 @@ import { Link } from 'react-router-dom';
 import {getDogs, reset, getTemperaments, filterByTemps,
      orderNameZA, orderNameAZ, orderWeightDESC, orderWeightASC, filterByApi, filterByDB, allOrigins} from "../../actions";
 
+
 import  './HomeDogs.css'
+import Box from '@mui/material/Box'
+
+import DogCard from "../DogCard/DogCard";
 
 
 export default function HomeDogs () {
@@ -138,12 +142,33 @@ export default function HomeDogs () {
             }
             </div>
 
+            <Box className="cards">
+            {
+                dogs.slice(base, paginate).map(dog => {
+                    return (
+                    <DogCard
+                    dog={dog}
+
+                    />
+                    
+             
+                    
+                    )})
+                    
+            }
+
+            </Box>
+          
             
           
-            {
-                dogs.slice(base, paginate).map(dog => (
-                    
-                <div key={dog.id} className="individual">
+        </div>
+        
+        
+    )
+
+
+
+       {/* <div key={dog.id} className="individual">
                     <li className="dogInfo">
                         <div className="breedPicture">
                             <img src={dog.image} alt="no img found"></img>
@@ -156,14 +181,5 @@ export default function HomeDogs () {
                         <p>{dog.weight} kgs</p>
                         <p>{dog.height} cms</p> 
                     </li>
-                    </div>
-                    
-                    ))
-                    
-            }
-          
-        </div>
-        
-        
-    )
+                    </div> */}
 }

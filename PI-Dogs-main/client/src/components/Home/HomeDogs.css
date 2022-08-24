@@ -24,3 +24,10 @@
   justify-content:space-around;
   display: flexbox;
 }
+
+.cards {
+  display: flex;
+  flex-direction: row;
+  margin: 1px;
+  /* justify-content:space-around; */
+}
