@@ -144,7 +144,7 @@ export default function HomeDogs () {
 
             <Box className="cards">
             {
-                dogs.slice(base, paginate).map(dog => {
+                dogs.length > 1 && dogs.slice(base, paginate).map(dog => {
                     return (
                     <DogCard
                     dog={dog}
@@ -156,6 +156,11 @@ export default function HomeDogs () {
                     )})
                     
             }
+            {/* {
+                dogs.length < 1 
+                    ? <h1>no se encontro el perrito</h1>
+                
+            } */}
 
             </Box>
           
