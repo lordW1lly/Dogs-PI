@@ -6,13 +6,21 @@ import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import  './DogCard.css'
+import { Link } from 'react-router-dom';
 
 export default function DogCard (props) {
     
     const {dog} = props
     
+    
     return (
-      <box className='cards'>
+      <div>
+        <div>
+          <button>
+            <Link to={`/dogs/41`}/>
+          </button>
+        </div>
+        <box className='cards'>
         <Card sx={{ maxWidth: 345 }} >
             <CardMedia
               component="img"
@@ -33,12 +41,16 @@ export default function DogCard (props) {
         </CardContent>
         <CardActions>
         <Button size="small">Share</Button>
-        <Button size="small">Learn More</Button>
+        <Button size="small">Learn more
+          <Link to={`/dogs/${dog.id}`}/>
+        </Button>
       </CardActions>
 
             
             
       </Card>
       </box>
+      </div>
+      
     )
 }
