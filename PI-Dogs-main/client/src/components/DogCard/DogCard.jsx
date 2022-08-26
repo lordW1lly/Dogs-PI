@@ -17,7 +17,7 @@ export default function DogCard (props) {
       <div>
         <div>
           <button>
-            <Link to={`/dogs/41`}/>
+            <Link to={`/dogs/${dog.id}`}/>
           </button>
         </div>
         <box className='cards'>
