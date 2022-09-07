@@ -16,14 +16,14 @@ export default function NavBar() {
         <nav className="navbar navbar-dark">
             {/* <header> */}
             <button className='homebtn'>
-                <Link exact to="/dogs" onClick={() =>dispatch(getDogs())} >Home</Link>
-                </button>
+                <Link exact to="/dogs" onClick={() => dispatch(getDogs())} >Home</Link>
+            </button>
             <button className='createbreedbtn'>
                 <Link to="/dog" onClick={handleClick} >Create Breed</Link>
-                </button>
-            <SearchBar  setPage={setPage} className="SearchBAr"/>    
+            </button>
+            <SearchBar setPage={setPage} className="SearchBAr" />
 
-        {/* </header> */}
+            {/* </header> */}
         </nav>
     )
 }

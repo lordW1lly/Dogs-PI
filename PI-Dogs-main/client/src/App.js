@@ -12,14 +12,16 @@ function App() {
   return (
     <React.Fragment>
           <NavBar />
+          <React.StrictMode>
           <Routes>
             {/* <Route path="/dogs" component={NavBar}/> */} 
-            <Route exact path="/" component={<LandingComponent/>} />
-            <Route exact path="/dogs" component={<HomeDogs/>} />
-            <Route path="/dogs/:id" component={<DogDetail/>} />
-            <Route  exact path="/dog" component={<Form/>}/>
-            <Route path="*" component={<HomeDogs/>}/>
+            <Route exact path="/" element={<LandingComponent/>} />
+            <Route  path="/dogs" element={<HomeDogs/>} />
+            <Route path="/dogs/:id" element={<DogDetail/>} />
+            <Route  exact path="/dog" element={<Form/>}/>
+            <Route path="*" element={<HomeDogs/>}/>
           </Routes>
+          </React.StrictMode>
       </React.Fragment>
   );
 }

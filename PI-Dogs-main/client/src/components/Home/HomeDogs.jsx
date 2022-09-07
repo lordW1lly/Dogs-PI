@@ -5,6 +5,7 @@ import {getDogs, reset, getTemperaments, filterByTemps,
      orderNameZA, orderNameAZ, orderWeightDESC, orderWeightASC, filterByApi, filterByDB, allOrigins} from "../../actions";
 
 import  './HomeDogs.css'
+import { NavBar } from "../NavBar/NavBarBTS";
 
 
 export default function HomeDogs () {
@@ -92,6 +93,7 @@ export default function HomeDogs () {
 
     return (
         <div>
+            <NavBar/>
            
             <div className="selectTemp">
                 <button onClick={()=> dispatch(getDogs())}>Clear Selection</button>
