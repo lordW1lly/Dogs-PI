@@ -4,28 +4,28 @@ import './SearchBar.css'
 import { useDispatch} from "react-redux";
 import { searchDog, reset } from "../../actions";
 
-export  function SearchBar({setPage}) {
+export  function SearchBar() {
 
     const dispatch = useDispatch();
     const [name, setName] = useState()
     const handleInput = (e) => {
         setName(e.target.value)
         e.preventDefault()
-        setPage(1)
+        
     }
-    const handleSubmit = (e) => {
+    const handleSubmitSB = (e) => {
         e.preventDefault()
         dispatch(reset())
         
         dispatch(searchDog(name))
         setName("")
-        setPage(1)
+        
     }
 
     return(
         <div className="SearchBar">
-            <p> Soy SearchBar</p>
-            <form
+            
+            <form class="d-flex"
             onSubmit={(e) => {
                 e.preventDefault();
                 dispatch(searchDog(name))
@@ -37,7 +37,7 @@ export  function SearchBar({setPage}) {
                 value={name}
                 onChange={handleInput}
                 />
-                <button type="submit" className="searchBtn" onClick={handleSubmit}></button>
+                <button  class="btn btn-outline-success" type="submit" onClick={handleSubmitSB}>btn de Schb</button>
                 {/* <input type="submit" value="Search"/> */}
                 
             </form>

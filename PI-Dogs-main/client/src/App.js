@@ -11,7 +11,7 @@ import LandingComponent from './components/Landing/LandingPage';
 function App() {
   return (
     <React.Fragment>
-          <NavBar />
+          {/* <NavBar /> */}
           <React.StrictMode>
           <Routes>
             {/* <Route path="/dogs" component={NavBar}/> */} 
