@@ -16,6 +16,7 @@ export  function SearchBar({setPage}) {
     const handleSubmit = (e) => {
         e.preventDefault()
         dispatch(reset())
+        
         dispatch(searchDog(name))
         setName("")
         setPage(1)

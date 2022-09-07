@@ -1,6 +1,6 @@
 import './App.css';
 import React from 'react';
-import { Route } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import NavBar from './components/NavBar/NavBar';
 import Form from './components/Form/Form';
 import DogDetail from './components/DogDetail/DogDetail';
@@ -12,14 +12,14 @@ function App() {
   return (
     <React.Fragment>
           <NavBar />
-          <Switch>
+          <Routes>
             {/* <Route path="/dogs" component={NavBar}/> */} 
             <Route exact path="/" component={LandingComponent} />
             <Route exact path="/dogs" component={HomeDogs} />
             <Route path="/dogs/:id" component={DogDetail} />
             <Route  exact path="/dog" component={Form}/>
             <Route path="*" component={HomeDogs}/>
-          </Switch>
+          </Routes>
       </React.Fragment>
   );
 }
