@@ -6,7 +6,7 @@ import Form from './components/Form/Form';
 import DogDetail from './components/DogDetail/DogDetail';
 import HomeDogs from './components/Home/HomeDogs';
 import LandingComponent from './components/Landing/LandingPage';
-import { Switch } from 'react-router-dom/cjs/react-router-dom.min';
+
 
 function App() {
   return (
@@ -14,11 +14,11 @@ function App() {
           <NavBar />
           <Routes>
             {/* <Route path="/dogs" component={NavBar}/> */} 
-            <Route exact path="/" component={LandingComponent} />
-            <Route exact path="/dogs" component={HomeDogs} />
-            <Route path="/dogs/:id" component={DogDetail} />
-            <Route  exact path="/dog" component={Form}/>
-            <Route path="*" component={HomeDogs}/>
+            <Route exact path="/" component={<LandingComponent/>} />
+            <Route exact path="/dogs" component={<HomeDogs/>} />
+            <Route path="/dogs/:id" component={<DogDetail/>} />
+            <Route  exact path="/dog" component={<Form/>}/>
+            <Route path="*" component={<HomeDogs/>}/>
           </Routes>
       </React.Fragment>
   );
