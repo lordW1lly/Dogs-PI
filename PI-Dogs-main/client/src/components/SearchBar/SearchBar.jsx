@@ -37,7 +37,7 @@ export  function SearchBar() {
                 value={name}
                 onChange={handleInput}
                 />
-                <button  class="btn btn-outline-success" type="submit" onClick={handleSubmitSB}>btn de Schb</button>
+                <button  class="btn btn-outline-success btnsubmit" type="submit" onClick={handleSubmitSB}>Search</button>
                 {/* <input type="submit" value="Search"/> */}
                 
             </form>
