@@ -48,7 +48,7 @@ export function Filters() {
     return (
         <>
             <div className="selectTemp ">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <ul class="navbar-nav navbar-dark bg-dark me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
                     <button onClick={() => dispatch(getDogs())}>Clear Selection</button>
                     </li>

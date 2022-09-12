@@ -33,11 +33,11 @@ export function NavBar() {
                             <a class={ location.pathname === '/dog' ? "nav-link active" : 'nav-link'}>Create Breed</a>
                             </Link>
                         </li>
-                        <li class="nav-item dropdown">
+                        <li class="nav-item dropdown dropdown-menu-dark">
                             <a class="nav-link dropdown-toggle"  id="navbarDropdown" role="button" data-bs-toggle="collapse" data-bs-target="#filters" aria-expanded="false">
                                 Filters
                             </a>
-                            <ul class="dropdown-menu" id='filters' aria-labelledby="navbarDropdown">
+                            <ul class="dropdown-menu dropdown-menu-dark" id='filters' aria-labelledby="navbarDropdown">
                                 {/* <li><a class="dropdown-item" href="#">Action</a></li>
                                 <li><a class="dropdown-item" href="#">Another action</a></li>
                                 <li><hr class="dropdown-divider"/></li>
