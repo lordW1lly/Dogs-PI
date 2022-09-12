@@ -3,10 +3,13 @@ import { Link } from 'react-router-dom';
 import { getDogs, getTemperaments, reset, searchDog } from '../../actions';
 import './NavBar.css'
 import { SearchBar } from '../SearchBar/SearchBar';
+import { useLocation } from 'react-router-dom';
 
 export function NavBar() {
 
     const dispatch = useDispatch();
+    let location = useLocation();
+    console.log('soy location:', location)
    
 
     return (
@@ -21,12 +24,12 @@ export function NavBar() {
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
                         <Link class='noDeco' exact to="/dogs" onClick={() => dispatch(getDogs())} >
-                            <a class="nav-link active" aria-current="page">Home</a>
+                            <a class={ location.pathname === '/dogs' ? "nav-link active" : 'nav-link'}/*  */ aria-current="page">Home</a>
                             </Link>
                         </li>
                         <li class="nav-item">
                         <Link to="/dog" class='noDeco' onClick={() => dispatch(getTemperaments())} >
-                            <a class="nav-link">Create Breed</a>
+                            <a class={ location.pathname === '/dog' ? "nav-link active" : 'nav-link'}>Create Breed</a>
                             </Link>
                         </li>
                         <li class="nav-item dropdown">
@@ -40,6 +43,7 @@ export function NavBar() {
                                 <li><a class="dropdown-item" href="#">Something else here</a></li>
                             </ul>
                         </li>
+                        
                         <li class="nav-item">
                             <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
                         </li>
