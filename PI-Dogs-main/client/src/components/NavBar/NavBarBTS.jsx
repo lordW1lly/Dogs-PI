@@ -4,12 +4,13 @@ import { getDogs, getTemperaments, reset, searchDog } from '../../actions';
 import './NavBar.css'
 import { SearchBar } from '../SearchBar/SearchBar';
 import { useLocation } from 'react-router-dom';
+import { Filters } from '../Filters/Filters';
 
 export function NavBar() {
 
     const dispatch = useDispatch();
     let location = useLocation();
-    console.log('soy location:', location)
+    
    
 
     return (
@@ -33,17 +34,20 @@ export function NavBar() {
                             </Link>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle"  id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle"  id="navbarDropdown" role="button" data-bs-toggle="collapse" data-bs-target="#filters" aria-expanded="false">
                                 Filters
                             </a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="#">Action</a></li>
+                            <ul class="dropdown-menu" id='filters' aria-labelledby="navbarDropdown">
+                                {/* <li><a class="dropdown-item" href="#">Action</a></li>
                                 <li><a class="dropdown-item" href="#">Another action</a></li>
                                 <li><hr class="dropdown-divider"/></li>
-                                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                <li><a class="dropdown-item" href="#">Something else here</a></li> */}
+                                <Filters/>
+
+
                             </ul>
                         </li>
-                        
+
                         <li class="nav-item">
                             <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
                         </li>

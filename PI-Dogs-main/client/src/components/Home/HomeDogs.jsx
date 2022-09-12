@@ -95,7 +95,7 @@ export default function HomeDogs () {
         <div>
             <NavBar/>
            
-            <div className="selectTemp">
+            {/* <div className="selectTemp">
                 <button onClick={()=> dispatch(getDogs())}>Clear Selection</button>
                 
                 <select onChange={ orderBreed } value=''>
@@ -129,7 +129,7 @@ export default function HomeDogs () {
 
                 </select>
                
-            </div>
+            </div> */}
             <div className="prev&next">
             {
             counter > 1 && <button onClick={previousPage}>Previous Page</button> 

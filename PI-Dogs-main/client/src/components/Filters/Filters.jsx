@@ -1,6 +1,8 @@
-import {getDogs, reset, getTemperaments, filterByTemps,
+import {
+    getDogs, reset, getTemperaments, filterByTemps,
     orderNameZA, orderNameAZ,
-     orderWeightDESC, orderWeightASC, filterByApi, filterByDB, allOrigins} from "../../actions";
+    orderWeightDESC, orderWeightASC, filterByApi, filterByDB, allOrigins
+} from "../../actions";
 import { useDispatch, useSelector } from "react-redux";
 
 export function Filters() {
@@ -45,39 +47,43 @@ export function Filters() {
     }
     return (
         <>
-            <div className="selectTemp">
-                <button onClick={() => dispatch(getDogs())}>Clear Selection</button>
+            <div className="selectTemp ">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <button onClick={() => dispatch(getDogs())}>Clear Selection</button>
+                    </li>
 
-                <select onChange={orderBreed} value=''>
-                    <option value=''  >Order by Name</option>
-                    <option value='Asc'>Ascendente</option>
-                    <option value='Desc'>Descendente</option>
-                </select>
-
-
-
-                <select onChange={orderOrigin} defaultValue='allOrigins'>
-                    <option value='allOrigins'>All Origins</option>
-                    <option value='API'>API</option>
-                    <option value='D.Base'>Created</option>
-                </select>
-
-                <select onChange={orderWeight} value=''>
-                    <option value=''  >Order by Weight</option>
-                    <option value='Asc'>Ascendente</option>
-                    <option value='Desc'>Descendente</option>
-                </select>
-
-                <select onChange={(e) => dispatch(filterByTemps(e.target.value))}>
-                    <option value=''>Filter by Temperament</option>
-                    {
-                        temperaments.map(temp => (
-                            <option key={temp.id} value={temp.name}>Filter by temperament: {temp.name}</option>
-                        ))
-                    }
+                    <select onChange={orderBreed} value=''>
+                        <option value=''  >Order by Name</option>
+                        <option value='Asc'>Ascendente</option>
+                        <option value='Desc'>Descendente</option>
+                    </select>
 
 
-                </select>
+
+                    <select onChange={orderOrigin} defaultValue='allOrigins'>
+                        <option value='allOrigins'>All Origins</option>
+                        <option value='API'>API</option>
+                        <option value='D.Base'>Created</option>
+                    </select>
+
+                    <select onChange={orderWeight} value=''>
+                        <option value=''  >Order by Weight</option>
+                        <option value='Asc'>Ascendente</option>
+                        <option value='Desc'>Descendente</option>
+                    </select>
+
+                    <select onChange={(e) => dispatch(filterByTemps(e.target.value))}>
+                        <option value=''>Filter by Temperament</option>
+                        {
+                            temperaments.map(temp => (
+                                <option key={temp.id} value={temp.name}>Filter by temperament: {temp.name}</option>
+                            ))
+                        }
+
+
+                    </select>
+                </ul>
 
             </div>
         </>
