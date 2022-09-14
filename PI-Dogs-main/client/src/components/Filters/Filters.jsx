@@ -56,7 +56,7 @@ export function Filters() {
                     <select class="form-select" onChange={orderBreed} value=''>
                     <option selected>Order by name</option>
 
-                       {/*  <option value=''  >Order by Name</option> */}
+                        <option value=''  >Order by Name</option>
                         <option value='Asc'>Ascendente</option>
                         <option value='Desc'>Descendente</option>
                     </select>
