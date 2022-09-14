@@ -47,44 +47,48 @@ export function Filters() {
     }
     return (
         <>
-            <div className="selectTemp container-fluid">
-                <ul class="navbar-nav navbar-dark bg-dark me-auto mb-2 mb-lg-0 container-fluid">
-                <li class="nav-item container-fluid">
-                    <button onClick={() => dispatch(getDogs())}>Clear Selection</button>
+            <div className="selectTemp">
+                <ul class="navbar-nav navbar-dark bg-dark /* me-auto mb-2 mb-lg-0 */">
+                    <li class="nav-item">
+                        <button onClick={() => dispatch(getDogs())}>Clear Selection</button>
+                    </li>
+                    <li class="nav-item ">
+                        <select class="form-select" onChange={orderBreed} value=''>
+                            <option selected>Order by name</option>
+
+                            <option value=''  >Order by Name</option>
+                            <option value='Asc'>Ascendente</option>
+                            <option value='Desc'>Descendente</option>
+                        </select>
                     </li>
 
-                    <select class="form-select" onChange={orderBreed} value=''>
-                    <option selected>Order by name</option>
 
-                        <option value=''  >Order by Name</option>
-                        <option value='Asc'>Ascendente</option>
-                        <option value='Desc'>Descendente</option>
-                    </select>
-
-
-
-                    <select class="form-select" multiple onChange={orderOrigin} defaultValue='allOrigins'>
-                        <option value='allOrigins'>All Origins</option>
-                        <option value='API'>API</option>
-                        <option value='D.Base'>Created</option>
-                    </select>
-
-                    <select class="form-select" onChange={orderWeight} value=''>
-                        <option value=''  >Order by Weight</option>
-                        <option value='Asc'>Ascendente</option>
-                        <option value='Desc'>Descendente</option>
-                    </select>
-
-                    <select class="form-select" onChange={(e) => dispatch(filterByTemps(e.target.value))}>
-                        <option value=''>Filter by Temperament</option>
-                        {
-                            temperaments.map(temp => (
-                                <option key={temp.id} value={temp.name}>Filter by temperament: {temp.name}</option>
-                            ))
-                        }
+                    <li class="nav-item">
+                        <select class="form-select" multiple onChange={orderOrigin} defaultValue='allOrigins'>
+                            <option value='allOrigins'>All Origins</option>
+                            <option value='API'>API</option>
+                            <option value='D.Base'>Created</option>
+                        </select>
+                    </li>
+                    <li class="nav-item">
+                        <select class="form-select" onChange={orderWeight} value=''>
+                            <option value=''  >Order by Weight</option>
+                            <option value='Asc'>Ascendente</option>
+                            <option value='Desc'>Descendente</option>
+                        </select>
+                    </li>
+                    <li class="nav-item">
+                        <select class="form-select" onChange={(e) => dispatch(filterByTemps(e.target.value))}>
+                            <option value=''>Filter by Temperament</option>
+                            {
+                                temperaments.map(temp => (
+                                    <option key={temp.id} value={temp.name}>Filter by temperament: {temp.name}</option>
+                                ))
+                            }
 
 
-                    </select>
+                        </select>
+                    </li>
                 </ul>
 
             </div>
