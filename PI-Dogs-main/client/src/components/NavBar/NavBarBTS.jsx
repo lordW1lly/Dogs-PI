@@ -5,6 +5,7 @@ import './NavBar.css'
 import { SearchBar } from '../SearchBar/SearchBar';
 import { useLocation } from 'react-router-dom';
 import { Filters } from '../Filters/Filters';
+import { BreedFilter } from '../Filters/BreedFilter'
 
 export function NavBar() {
 
@@ -40,10 +41,7 @@ export function NavBar() {
                                 Filters
                             </a>
                             <ul class="dropdown-menu dropdown-menu-dark" id='filters' aria-labelledby="navbarDropdown">
-                                {/* <li><a class="dropdown-item" href="#">Action</a></li>
-                                <li><a class="dropdown-item" href="#">Another action</a></li>
-                                <li><hr class="dropdown-divider"/></li>
-                                <li><a class="dropdown-item" href="#">Something else here</a></li> */}
+                                
                                 <Filters />
 
 
@@ -56,6 +54,10 @@ export function NavBar() {
                         <li class="nav-item">
                         <a class="nav-link" data-bs-toggle="offcanvas" data-bs-target="#offcanvasTop" aria-controls="offcanvasTop">TopBar</a>
                         </li>
+                        <li class="nav-item">
+                        <BreedFilter/>
+                        </li>
+                        
                     </ul>
                     <form class="d-flex">
                         <SearchBar class="form-control me-2" type="search" aria-label="Search" ></SearchBar>
