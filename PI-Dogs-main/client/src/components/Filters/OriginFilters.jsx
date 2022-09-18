@@ -3,6 +3,7 @@ import { filterByApi, filterByDB, allOrigins } from './../../actions/index'
 
 
 export function OriginFilter () {
+    const dispatch = useDispatch()
     const orderOrigin = (e) => {
 
         if (e.target.value === 'API') {
@@ -22,11 +23,12 @@ export function OriginFilter () {
         <>
             <div class="dropdown">
                 <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    Order Breed
+                    Origin
                 </button>
                 <ul class="dropdown-menu dropdown-menu-dark">
-                    <li><button class="dropdown-item" value='Asc' onClick={orderBreed}>Order A - Z</button></li>
-                    <li><button class="dropdown-item" type="button" value='Desc' onClick={orderBreed}>order Z - A</button></li>
+                    <li><button class="dropdown-item" value='API' onClick={orderOrigin}>API</button></li>
+                    <li><button class="dropdown-item" value='D.Base' onClick={orderOrigin}>D.Base</button></li>
+                    <li><button class="dropdown-item" type="button" value='allOrigins' onClick={orderOrigin}>allOrigins</button></li>
                     
                 </ul>
             </div>

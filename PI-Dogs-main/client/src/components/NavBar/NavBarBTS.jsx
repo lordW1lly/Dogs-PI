@@ -6,6 +6,8 @@ import { SearchBar } from '../SearchBar/SearchBar';
 import { useLocation } from 'react-router-dom';
 import { Filters } from '../Filters/Filters';
 import { BreedFilter } from '../Filters/BreedFilter'
+import { OriginFilter } from '../Filters/OriginFilters';
+import { OrderWeight } from '../Filters/OrderWeight';
 
 export function NavBar() {
 
@@ -36,7 +38,7 @@ export function NavBar() {
                             </Link>
                         </li>
                         
-                        <li class="nav-item dropdown dropdown-menu-dark">
+                        {/* <li class="nav-item dropdown dropdown-menu-dark">
                             <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="collapse" data-bs-target="#filters" aria-expanded="false">
                                 Filters
                             </a>
@@ -46,7 +48,7 @@ export function NavBar() {
 
 
                             </ul>
-                        </li>
+                        </li> */}
 
                         <li class="nav-item">
                             <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
@@ -54,9 +56,15 @@ export function NavBar() {
                         <li class="nav-item">
                         <a class="nav-link" data-bs-toggle="offcanvas" data-bs-target="#offcanvasTop" aria-controls="offcanvasTop">TopBar</a>
                         </li>
-                        <li class="nav-item">
+                        {/* <li class="nav-item">
                         <BreedFilter/>
                         </li>
+                        <li class="nav-item">
+                        <OriginFilter/>
+                        </li>
+                        <li class="nav-item">
+                        <OrderWeight/>
+                        </li> */}
                         
                     </ul>
                     <form class="d-flex">
