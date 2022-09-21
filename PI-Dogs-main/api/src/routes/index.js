@@ -136,7 +136,9 @@ router.get('/dogs/:id', async (req, res) => {
 router.get('/temperament', async (req,res) => {
     
     const alltemps = [];
+   
     const tempsDB = await Temperament.findAll();
+    const nodupDB = [...new Set(tempsDB)]
     if(tempsDB.length == 0){
         const all = (await axios.get(`https://api.thedogapi.com/v1/breeds?${apiKey}`)).data.map( a => {
             return {
@@ -151,11 +153,12 @@ router.get('/temperament', async (req,res) => {
        
         let longArray = longString.split(", ")
         let noDuplicates = [...new Set(longArray)]
+        console.log('soy nodupli:', noDuplicates.length)
         
         try {
             await noDuplicates.forEach(temp => Temperament.create({name: temp}))
            
-           return res.send(tempsDB)
+           return res.send(nodupDB)
            
            
         } 
@@ -164,7 +167,7 @@ router.get('/temperament', async (req,res) => {
             }
     } else {
         try {
-            res.send(tempsDB)
+            res.send(nodupDB)
             } 
         catch {
                 res.status(404).send('no en 2')

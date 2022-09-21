@@ -68,8 +68,12 @@ export default function HomeDogs() {
 
     return (
         <div>
+            <>
             <NavBar />
+            </>
+            <>
             <AllFiltersButtos/>
+            </>
 
             {/* <div className="selectTemp">
                
@@ -83,7 +87,7 @@ export default function HomeDogs() {
                     }
                    
 
-                </select>
+                </select>}
                
             </div> */}
             <div className="prev&next">

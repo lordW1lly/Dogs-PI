@@ -16,7 +16,7 @@ export function BreedFilter() {
     return (
         <>
             <div class="dropdown">
-                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <button class="btn btn-secondary dropdown-toggle bg-dark" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                     Order Breed
                 </button>
                 <ul class="dropdown-menu dropdown-menu-dark">

@@ -2,16 +2,28 @@ import { BreedFilter } from "./BreedFilter";
 import { OriginFilter } from "./OriginFilters";
 import { OrderWeight } from "./OrderWeight";
 import { FilterTemps } from "./FilterTemps";
+import './AllFilters.css';
 
-export function AllFiltersButtos () {
+export function AllFiltersButtos() {
     return (
-        <div>
-        <FilterTemps />
-        <OrderWeight />
-        <OriginFilter />
-        <BreedFilter />
+        <>
+            <div class="container fluid container-sm bttns">
+                
+                <div class='bttn'>
+                    <OrderWeight />
+                </div>
+                <div class='bttn'>
+                    <OriginFilter />
+                </div>
+                <div class='bttn'>
+                    <BreedFilter  />
+                </div>
+                <div class='bttn'>
+                    <FilterTemps />
+                </div>
 
-    </div>
+
+            </div>
+        </>
     )
 }
-   

@@ -1,0 +1,15 @@
+.bttns {
+    display: flex;
+    flex-direction: row;
+    margin: 5px;
+    
+}
+
+.bttn {
+    margin: 5px;
+    
+}
+
+.tempsdiv {
+    margin-top: 5px;
+}
