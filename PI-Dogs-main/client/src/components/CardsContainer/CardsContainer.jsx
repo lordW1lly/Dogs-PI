@@ -55,18 +55,25 @@ export function CardContainer() {
 
                 }
             </div>
-            
-            <div class='card-group'>
-                {dogs.length >= 1 && dogs.slice(base, paginate).map(dog => {
-                    return (
+
+
+
+
+            <div class="row row-cols-4">
+            {dogs.length >= 1 && dogs.slice(base, paginate).map(dog => {
+                return (
+                    
+
                         <Card dog={dog} />
+                    
 
 
 
 
-                    )
-                })}
+                )
+            })}
             </div>
+
 
 
         </>
