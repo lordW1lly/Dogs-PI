@@ -33,6 +33,11 @@ export function NavBar() {
                             </Link>
                         </li>
                         <li class="nav-item">
+                            <Link class='noDeco' exact to="/dogs2" onClick={() => dispatch(getDogs())} >
+                                <a class={location.pathname === '/dogs2' ? "nav-link active" : 'nav-link'}/*  */ aria-current="page">Home2</a>
+                            </Link>
+                        </li>
+                        <li class="nav-item">
                             <Link to="/dog" class='noDeco' onClick={() => dispatch(getTemperaments())} >
                                 <a class={location.pathname === '/dog' ? "nav-link active" : 'nav-link'}>Create Breed</a>
                             </Link>

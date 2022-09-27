@@ -94,6 +94,49 @@ export function filterByTemps(temperament) {
     }
 }
 
+export function filterTemps(selectedTemps) {
+    return async (dispatch) => {
+        const allDogs =  (await axios.get(`http://localhost:3001/dogs`)).data
+        try {
+            
+            const splittedTemps = allDogs.map(dog =>  {
+                let dogo = {
+                    id: dog.id,
+                    image: dog.image,
+                    name: dog.name,
+                    temperament: dog.temperament?.split(', '),
+                    weight: dog.weight
+                }
+                return dogo
+            })
+            console.log('soy splitted', splittedTemps)
+            console.log('soy selectedTemps', selectedTemps)
+             
+            let matched = splittedTemps.filter(dog => dog.temperament?.includes(selectedTemps))
+            let probando = []
+            for( let i=0; i < selectedTemps.length; i++ ) {
+                let dogstoFilter = splittedTemps
+                let filtered = splittedTemps.filter(dog => dog.temperament?.includes(selectedTemps[i]))
+                dogstoFilter = filtered
+                probando = filtered
+                
+                
+                    
+                console.log('soy dogsToFilter', dogstoFilter)
+                
+            }
+            console.log('soy probando',probando)
+            /* console.log('soy filtered', filtered) */
+            return dispatch({
+                type: 'FILTER_TEMPS',
+                payload: matched
+            })
+        } catch(error) {
+            console.log(error)
+        }
+    }
+}
+
 export function orderNameAZ() {
     return {
         type: "ORDER_A_Z"

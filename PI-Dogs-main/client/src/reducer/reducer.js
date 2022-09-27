@@ -62,7 +62,7 @@ export default function rootReducer(state = initialState, action) {
             }
 
         case 'FILTER_TEMPERAMENTS':
-            if (action.payload === '') return {
+            if (action.payload === '' ) return {
                 ...state
             }
             let dogbase = [...state.dogsLoaded]
@@ -71,6 +71,17 @@ export default function rootReducer(state = initialState, action) {
                 ...state,
                 dogsLoaded: filteredDogs
             }
+
+        case 'FILTER_TEMPS':
+            console.log('soy action.payload', action.payload)
+            if(action.payload === []) return {
+                ...state
+            }
+            return {
+                ...state,
+                dogsLoaded: action.payload
+            }
+            
 
         case 'ORDER_A_Z':
             let ordered = order([...state.dogsLoaded], 'name')

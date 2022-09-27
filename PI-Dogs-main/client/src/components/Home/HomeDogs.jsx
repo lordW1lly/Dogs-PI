@@ -2,8 +2,8 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from 'react-router-dom';
 import {
-    getDogs, reset, getTemperaments, filterByTemps,
-    orderNameZA, orderNameAZ, orderWeightDESC, orderWeightASC, filterByApi, filterByDB, allOrigins
+    getDogs, reset, getTemperaments,
+    
 } from "../../actions";
 
 import './HomeDogs.css'
@@ -14,8 +14,15 @@ import { AllFiltersButtos } from "../Filters/AllFiltersButtons";
 
 export default function HomeDogs() {
 
+
     const dispatch = useDispatch()
     const dogs = useSelector(state => state.dogsLoaded)
+
+    useEffect(() => {
+        dispatch(getDogs())
+        dispatch(getTemperaments())
+        //console.log('entro useEffect')
+    }, [])
     
     const [paginate, setPaginate] = useState(8);
     const [base, setBase] = useState(0);
@@ -43,11 +50,7 @@ export default function HomeDogs() {
         setCounter((prevValue) => prevValue - 1)
     };
 
-    useEffect(() => {
-        dispatch(getDogs())
-        dispatch(getTemperaments())
-        //console.log('entro useEffect')
-    }, [])
+    
 
     useEffect(() => {
         return () => {
@@ -75,21 +78,7 @@ export default function HomeDogs() {
             <AllFiltersButtos/>
             </>
 
-            {/* <div className="selectTemp">
-               
-
-                <select onChange={(e) => dispatch(filterByTemps(e.target.value))}>
-                    <option value=''>Filter by Temperament</option>
-                    {
-                        temperaments.map( temp => (
-                            <option key={temp.id} value={temp.name}>Filter by temperament: {temp.name}</option>
-                        ))
-                    }
-                   
-
-                </select>}
-               
-            </div> */}
+    
             <div className="prev&next">
                 {
                     counter > 1 && <button onClick={previousPage}>Previous Page</button>
