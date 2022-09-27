@@ -4,12 +4,13 @@ import { Card } from "../Card/Card";
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
 import { getDogs, getDogsId, getTemperaments } from "../../actions";
+import './CardsContainer.css'
 
 
 export function CardContainer() {
 
     const dogs = useSelector(state => state.dogsLoaded)
-    const dispatch = useDispatch()
+    const dispatch = useDispatch() 
 
     useEffect(() => {
         dispatch(getDogs())
@@ -46,36 +47,31 @@ export function CardContainer() {
     return (
 
         <>
-            <div className="prev&next">
+            <div class="btn-group prev&next btns-next" role="group" aria-label="Basic mixed styles example">
                 {
-                    counter > 1 && <button onClick={previousPage}>Previous Page</button>
+                    counter > 1 && <button type="button" class="btn btn-dark" onClick={previousPage}>Previous Page</button>
                 }
                 {
-                    counter < indexPages && <button onClick={nextPage}>Next Page</button>
+                    counter < indexPages && <button type="button" class="btn btn-dark" onClick={nextPage}>Next Page</button>
 
                 }
             </div>
 
+            <div class="row row-cols-1 row-cols-md-4 g-3">
+                {dogs.length >= 1 && dogs.slice(base, paginate).map(dog => {
+                    return (
 
-
-
-            <div class="row row-cols-4">
-            {dogs.length >= 1 && dogs.slice(base, paginate).map(dog => {
-                return (
-                    
-
-                        <Card dog={dog} />
-                    
-
-
-
-
-                )
-            })}
+                        <div >
+                            <Card class='cards' dog={dog} />
+                        </div>
+                    )
+                })}
             </div>
-
-
 
         </>
     )
 }
+
+
+
+

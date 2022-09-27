@@ -7,15 +7,15 @@ export function Card(props) {
         <>
             <div class="col">
 
-                <div class="card">
-                    <picture>
-                        <img src={dog.image} class="card-img-top " alt="..." />
+                <div class="card ">
+                    <picture class='pictureSize'>
+                        <img src={dog.image} class="card-img-top pictureSize " alt="..." />
 
                     </picture>
                     <div class="card-body">
                         <h5 class="card-title">{dog.name}</h5>
                         <p class="card-text">{dog.temperament}</p>
-                        <p class="card-text">{dog.weight}</p>
+                        <p class="card-text">{dog.weight} kgs.</p>
 
 
                     </div>

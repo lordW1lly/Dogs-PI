@@ -11,9 +11,18 @@ export function Home () {
 
     return (
         <>
+        
         <NavBar/>
+        
+
+
+        <div>
         <AllFiltersButtos/>
+        </div>
+
+        <div class='container-fluid'>
         <CardContainer/>
+        </div>
         </>
     )
 }
