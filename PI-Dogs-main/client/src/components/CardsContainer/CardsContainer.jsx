@@ -49,10 +49,10 @@ export function CardContainer() {
         <>
             <div class="btn-group prev&next btns-next" role="group" aria-label="Basic mixed styles example">
                 {
-                    counter > 1 && <button type="button" class="btn btn-dark" onClick={previousPage}>Previous Page</button>
+                    counter > 1 ? <button type="button" class="btn btn-dark" onClick={previousPage}   >Previous Page</button> : <button type="button" class="btn btn-dark" onClick={previousPage} disabled   >Previous Page</button>
                 }
                 {
-                    counter < indexPages && <button type="button" class="btn btn-dark" onClick={nextPage}>Next Page</button>
+                    counter < indexPages ? <button type="button" class="btn btn-dark" onClick={nextPage}>Next Page</button> : <button type="button" class="btn btn-dark" onClick={nextPage} disabled >Next Page</button>
 
                 }
             </div>
