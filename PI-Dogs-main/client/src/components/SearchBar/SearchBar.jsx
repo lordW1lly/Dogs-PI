@@ -1,45 +1,48 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import './SearchBar.css'
-import  { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { searchDog } from "../../actions";
 
-export  function SearchBar({setPage}) {
+import { useDispatch } from "react-redux";
+import { searchDog, reset } from "../../actions";
+
+export function SearchBar() {
 
     const dispatch = useDispatch();
     const [name, setName] = useState()
     const handleInput = (e) => {
         setName(e.target.value)
         e.preventDefault()
-        setPage(1)
+
     }
-    const handleSubmit = (e) => {
+    const handleSubmitSB = (e) => {
         e.preventDefault()
+        dispatch(reset())
+
         dispatch(searchDog(name))
         setName("")
-        setPage(1)
+
     }
 
-    return(
-        <div className="SearchBar">
-            <p> Soy SearchBar</p>
-            <form
-            onSubmit={(e) => {
-                e.preventDefault();
-                dispatch(searchDog(name))
+    return (
+        <div className="SearchBar container-fluid" role='search'>
 
-            }}>
+            <form class="d-flex"
+                onSubmit={(e) => {
+                    e.preventDefault();
+                    dispatch(searchDog(name))
+
+                }}>
                 <input
-                type="text"
-                placeholder="Breed.."
-                value={name}
-                onChange={handleInput}
+                    type="search"
+                    placeholder="Breed.."
+                    class="form-control me-2"
+                    value={name}
+                    onChange={handleInput}
                 />
-                <button type="submit" className="searchBtn" onClick={handleSubmit}></button>
+                <button class="btn btn-outline-success btnsubmit" type="submit" onClick={handleSubmitSB}>Search</button>
                 {/* <input type="submit" value="Search"/> */}
-                
+
             </form>
-            
+
 
         </div>
 

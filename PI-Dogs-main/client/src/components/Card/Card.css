@@ -1,0 +1,7 @@
+.pictureSize {
+    height: 250px;
+
+    /* width: 350px; */
+    
+    object-fit: cover;
+}

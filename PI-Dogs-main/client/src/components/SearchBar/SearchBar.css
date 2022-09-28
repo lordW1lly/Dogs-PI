@@ -1,3 +1,8 @@
 .SearchBar {
     -ms-flex-align: end;
 }
+
+.btnsubmit {
+   
+    margin-left: 5px;
+}

@@ -7,28 +7,28 @@ const initialState = {
 
 
 
-function order(arr, prop) {   
-    let ordered = [] 
-    if(prop === 'name') {
-        ordered = arr.sort(function (a, b) {        
+function order(arr, prop) {
+    let ordered = []
+    if (prop === 'name') {
+        ordered = arr.sort(function (a, b) {
             if (a[prop] < b[prop]) { return -1; }
             if (a[prop] > b[prop]) { return 1; }
             return 0;
         });
     } else {
-        ordered = arr.sort(function (a, b) {            
+        ordered = arr.sort(function (a, b) {
             if (a[prop][0] < b[prop][0]) { return -1; }
             if (a[prop][0] > b[prop][0]) { return 1; }
             return 0;
         });
-    
+
     }
     return ordered
 }
 
 
- export default  function rootReducer(state = initialState, action) {
-    switch(action.type) {
+export default function rootReducer(state = initialState, action) {
+    switch (action.type) {
 
         case 'GET_DOGS':
             return {
@@ -49,9 +49,9 @@ function order(arr, prop) {
             }
 
         case 'RESET':
-            return{
+            return {
                 ...state,
-                dogID:{}
+                dogID: {}
 
             }
 
@@ -61,16 +61,27 @@ function order(arr, prop) {
                 temperaments: action.payload
             }
 
-        case 'FILTER_TEMPERAMENTS': 
-            if(action.payload === '') return {
+        case 'FILTER_TEMPERAMENTS':
+            if (action.payload === '' ) return {
                 ...state
             }
             let dogbase = [...state.dogsLoaded]
-            let filteredDogs = dogbase.filter( d => d.temperament?.includes(action.payload))
+            let filteredDogs = dogbase.filter(d => d.temperament?.includes(action.payload))
             return {
                 ...state,
                 dogsLoaded: filteredDogs
             }
+
+        case 'FILTER_TEMPS':
+            console.log('soy action.payload', action.payload)
+            if(action.payload === []) return {
+                ...state
+            }
+            return {
+                ...state,
+                dogsLoaded: action.payload
+            }
+            
 
         case 'ORDER_A_Z':
             let ordered = order([...state.dogsLoaded], 'name')
@@ -110,8 +121,8 @@ function order(arr, prop) {
             return {
                 ...state,
                 dogsLoaded: order([...state.dogsLoaded], 'height').reverse()
-            }    
-                
+            }
+
 
         case 'CREATE_DOG':
             return {
@@ -127,6 +138,7 @@ function order(arr, prop) {
                 ...state,
                 dogsLoaded: dogsApi
             }
+
         case 'FILTER_BY_DB':
             let doggy = [...state.dogsLoaded]
             let dogsDB = doggy.filter(d => d.id.length === 36)
@@ -134,16 +146,17 @@ function order(arr, prop) {
                 ...state,
                 dogsLoaded: dogsDB
             }
+
         case 'ALL_ORIGINS':
             return {
                 ...state
-            }        
-            
+            }
+
 
 
 
         default:
-            return state    
+            return state
 
     }
 
