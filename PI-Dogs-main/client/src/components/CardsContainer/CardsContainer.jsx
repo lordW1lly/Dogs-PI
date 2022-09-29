@@ -14,7 +14,7 @@ export function CardContainer() {
 
     useEffect(() => {
         dispatch(getDogs())
-        dispatch(getTemperaments())
+        /* dispatch(getTemperaments()) */
         //console.log('entro useEffect')
     }, [])
 
@@ -61,8 +61,8 @@ export function CardContainer() {
                 {dogs.length >= 1 && dogs.slice(base, paginate).map(dog => {
                     return (
 
-                        <div >
-                            <Card class='cards' dog={dog} />
+                        <div class="col" >
+                            <Card class='cards h-100' dog={dog} />
                         </div>
                     )
                 })}
