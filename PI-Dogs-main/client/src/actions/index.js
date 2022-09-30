@@ -99,7 +99,7 @@ export function filterTemps(selectedTemps) {
         const allDogs =  (await axios.get(`http://localhost:3001/dogs`)).data
         try {
             
-            const splittedTemps = allDogs.map(dog =>  {
+            let splittedTemps = allDogs.map(dog =>  {
                 let dogo = {
                     id: dog.id,
                     image: dog.image,
@@ -112,24 +112,38 @@ export function filterTemps(selectedTemps) {
             console.log('soy splitted', splittedTemps)
             console.log('soy selectedTemps', selectedTemps)
              
-            let matched = splittedTemps.filter(dog => dog.temperament?.includes(selectedTemps))
-            let probando = []
+            
+            let dogsWithTemp = []
             for( let i=0; i < selectedTemps.length; i++ ) {
-                let dogstoFilter = splittedTemps
-                let filtered = splittedTemps.filter(dog => dog.temperament?.includes(selectedTemps[i]))
-                dogstoFilter = filtered
-                probando = filtered
-                
+                if (i < 1) {
+                   let oneTemp = splittedTemps.filter(dog => dog.temperament?.includes(selectedTemps[i]))
+                   console.log('soy oneTemp:', oneTemp)
+                   dogsWithTemp = oneTemp
+                }
+                let othersTemps = dogsWithTemp.filter(dog => dog.temperament?.includes(selectedTemps[i]))
+                dogsWithTemp = othersTemps
                 
                     
-                console.log('soy dogsToFilter', dogstoFilter)
+               
                 
             }
-            console.log('soy probando',probando)
+            let dogsFinal = dogsWithTemp.map( dog => {
+               let tempString = (dog.temperament.map(tmp => " ".concat(tmp))).toString()
+                console.log(tempString)
+                let dogconcat = {
+                    name: dog.name,
+                    image: dog.image,
+                    id: dog.id,
+                    weight: dog.weight,
+                    temperament: tempString //dog.temperament?.concat('').toString('')
+                }
+                return dogconcat
+            })
+            /* console.log('soy dogsFinal',dogsFinal) */
             /* console.log('soy filtered', filtered) */
             return dispatch({
                 type: 'FILTER_TEMPS',
-                payload: matched
+                payload: dogsFinal
             })
         } catch(error) {
             console.log(error)
