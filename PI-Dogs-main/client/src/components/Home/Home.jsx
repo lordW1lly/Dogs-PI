@@ -11,18 +11,18 @@ export function Home () {
 
     return (
         <>
-        
+        <div>
         <NavBar/>
-        
+        </div>
 
 
         <div>
         <AllFiltersButtos/>
         </div>
-
         <div class='container-fluid'>
         <CardContainer/>
         </div>
         </>
+
     )
 }

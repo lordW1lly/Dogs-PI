@@ -18,7 +18,7 @@ export function FilterTemps() {
 
     }, [])
 
-    /* const [checkedtemp, setCheckedtemp] = useState(temperaments); */
+    
 
     const handleTempis = (e) => {
         let updatedTempis = [...tempis, e.target.value]
@@ -26,25 +26,16 @@ export function FilterTemps() {
             setTempis(updatedTempis)
             dispatch(filterTemps(updatedTempis))
         } else {
-            setTempis(tempis.filter(t => t !== e.target.value))
-            dispatch(filterTemps(tempis))
+            updatedTempis = tempis.filter(t => t !== e.target.value)
+            setTempis(updatedTempis)
+            dispatch(filterTemps(updatedTempis))
         }
 
     }
 
     console.log('soy tempis', tempis)
 
-    /*  const handleOnChange = (position) => {
-         const updatedCheckedState = temperaments.map((item, index) =>
-         index === position ? !item : item
-         );
-        
-         setCheckedtemp(updatedCheckedState);
-         
-     }
-     
-     console.log('soy checkedtemp:',checkedtemp)
-  */
+    
     return (
         <>
             <button class="btn btn-secondary dropdown-toggle bg-dark" type="button" data-bs-toggle="collapse" data-bs-target="#filterTemps" aria-expanded="false" aria-controls="filterTemps">

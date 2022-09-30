@@ -4,11 +4,25 @@
 }
 
 .bou {
-/*     background-image: url("https://cdn.dribbble.com/users/2693097/screenshots/11088702/media/3dfc523aaff4ef2cffab128bdff76ca8.jpg?compress=1&resize=768x576&vertical=top")
+    /*     background-image: url("https://cdn.dribbble.com/users/2693097/screenshots/11088702/media/3dfc523aaff4ef2cffab128bdff76ca8.jpg?compress=1&resize=768x576&vertical=top")
  */
- display: flex;
- justify-content: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    line-height: 800px;
+    background-image: url("https://www.telegraph.co.uk/content/dam/art/2018/10/17/195cdcf1a49a0c0572442a6c3e248682_trans_NvBQzQNjv4Bq31nZxXR2vc6Bv6VkQe2yCEsXYZUW_YHC432sQ6dZ9bc.jpg");
+    background-size: cover;
+    object-fit: cover;
+    height: 100%;
 }
+
+.noDecos {
+    text-decoration: none;
+    margin-left: 900px;
+
+
+}
+
 body {
     background-image: url(./images/perritosLanding.webp);
     background-attachment: fixed

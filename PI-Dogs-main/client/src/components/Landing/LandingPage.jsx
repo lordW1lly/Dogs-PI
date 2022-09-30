@@ -4,9 +4,11 @@ import './LandingStyles.css';
 export default function LandingComponent () {
     return (
         <div className="bou">
-            <button>
-                <Link exact to="/dogs" >Home</Link>
+            <Link exact to="/dogs" >
+            <button type="button" class="btn  btn-dark btn-lg noDecos ">
+                Home
                 </button>
+                </Link>
         </div>
     )
 
