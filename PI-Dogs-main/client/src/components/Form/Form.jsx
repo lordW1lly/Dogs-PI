@@ -135,7 +135,10 @@ export default function Form() {
 
     return (
         <div>
+            <>
             <NavBar/>
+            </>
+            <div>
             <form onSubmit={handleSubmit}>
 
                 <div className="field">
@@ -214,6 +217,7 @@ dogsTemperaments.map( dt => (
 } */}
 
             </form>
+            </div>
         </div>
 
     )
