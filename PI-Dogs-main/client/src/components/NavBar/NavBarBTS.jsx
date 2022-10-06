@@ -39,6 +39,12 @@ export function NavBar() {
                                 </Link>
                             </li>
 
+                            <li class="nav-item">
+                                <Link to="/dogB" class='noDeco' onClick={() => dispatch(getTemperaments())} >
+                                    <a class={location.pathname === '/dogB' ? "nav-link active" : 'nav-link'}>Create BreedBTS</a>
+                                </Link>
+                            </li>
+
                             {/* <li class="nav-item dropdown dropdown-menu-dark">
                             <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="collapse" data-bs-target="#filters" aria-expanded="false">
                                 Filters
