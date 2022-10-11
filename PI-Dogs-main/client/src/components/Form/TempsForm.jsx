@@ -21,15 +21,15 @@ export function TempsForm() {
     return (
         <div class='container'>
             <div class="card card-body dark">
-                <div class="container text-center">
-                    <div class='mb-2'>
+                <div class="container-fluid text-center">
+                    <div class='container-fluid mb-2 selectedTempscontainer'>
                         {
                             selectedTemps.map(temp => {
 
                                 return (
                                     <div key={temp}>
                                         <ul>
-                                            <span key={temp} class="btn btn-dark selectedTemps" value={temp}>{temp}
+                                            <span key={temp} class="btn btn-dark selectedTempsbtns" value={temp}>{temp}
                                                 <button type="button" value={temp} onClick={onClose} class="badge btn btn-outline-danger  selectedTemps">X</button>
                                             </span>
 
