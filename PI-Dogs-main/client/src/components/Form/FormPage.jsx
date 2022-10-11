@@ -7,7 +7,7 @@ import { useDispatch } from "react-redux";
 
 export function FormPage () {
 
-    useEffect( ()=> {
+    useEffect( () => {
         dispatch(getTemperaments())
     },[])
 

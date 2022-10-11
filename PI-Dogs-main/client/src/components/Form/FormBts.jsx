@@ -6,7 +6,7 @@ export function FormBTS() {
 
 
     return (
-        <>
+        <div class='container'>
         <div class="input-group mb-2" id='imageUrl'>
                 <span class="input-group-text">Image URL</span>
                 <input type="text" aria-label="First name" class="form-control" />
@@ -30,6 +30,6 @@ export function FormBTS() {
             </div>
             
 
-        </>
+        </div>
     )
 }
