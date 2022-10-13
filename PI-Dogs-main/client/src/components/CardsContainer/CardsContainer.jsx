@@ -61,8 +61,8 @@ export function CardContainer() {
                 {dogs.length >= 1 && dogs.slice(base, paginate).map(dog => {
                     return (
 
-                        <div class="col" >
-                            <Card class='cards h-100' dog={dog} />
+                        <div class="col" key={dog.name}>
+                            <Card class='cards h-100' dog={dog}  />
                         </div>
                     )
                 })}

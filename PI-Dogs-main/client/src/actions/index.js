@@ -5,13 +5,12 @@ import axios from 'axios';
 
  export  function getDogs() {
     return async function(dispatch) {
-        // const dogsCreated = await Dog.findAll()
+        
         let allDogs = (await axios.get(`http://localhost:3001/dogs`)).data;
-        // dogsCreated.map( dc => allDogs.push(dc))
-       //let  allDogsjson = allDogs.toJson()
+        
         dispatch({
             type:"GET_DOGS",
-            payload: allDogs//json
+            payload: allDogs
         })
         
     }
@@ -114,8 +113,16 @@ export function filterTemps(selectedTemps) {
              
             
             let dogsWithTemp = []
-            for( let i=0; i < selectedTemps.length; i++ ) {
-                if (i < 1) {
+            if(selectedTemps.length === 0) {
+                dogsWithTemp = allDogs
+                console.log('soy tempslength0:', dogsWithTemp)
+                return dispatch({
+                    type: 'FILTER_TEMPS',
+                    payload: allDogs
+                })
+            }
+            for( let i=0 ; i < selectedTemps.length; i++ ) {
+                  if (i < 1) {
                    let oneTemp = splittedTemps.filter(dog => dog.temperament?.includes(selectedTemps[i]))
                    console.log('soy oneTemp:', oneTemp)
                    dogsWithTemp = oneTemp
@@ -128,7 +135,7 @@ export function filterTemps(selectedTemps) {
                 
             }
             let dogsFinal = dogsWithTemp.map( dog => {
-               let tempString = (dog.temperament.map(tmp => " ".concat(tmp))).toString()
+               let tempString = (dog.temperament?.map(tmp => " ".concat(tmp))).toString()
                 console.log(tempString)
                 let dogconcat = {
                     name: dog.name,
@@ -139,7 +146,7 @@ export function filterTemps(selectedTemps) {
                 }
                 return dogconcat
             })
-            /* console.log('soy dogsFinal',dogsFinal) */
+            console.log('soy dogsFinal',dogsFinal)
             /* console.log('soy filtered', filtered) */
             return dispatch({
                 type: 'FILTER_TEMPS',

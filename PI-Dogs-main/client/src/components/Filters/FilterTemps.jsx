@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
-import { filterByTemps, filterTemps } from "../../actions";
+import { filterByTemps, filterTemps, getTemperaments } from "../../actions";
 
 import './AllFilters.css'
 
@@ -15,7 +15,7 @@ export function FilterTemps() {
     const [tempis, setTempis] = useState([])
 
     useEffect(() => {
-
+        dispatch(getTemperaments())
     }, [])
 
     
@@ -49,7 +49,7 @@ export function FilterTemps() {
                             {
                                 temps.map((temp) =>
                                 (
-                                    <div class="col">
+                                    <div class="col" key={temp.id}>
                                         <li class=" form-check" key={temp.id}>
                                             <input class="form-check-input" key={temp.id} type="checkbox" value={temp.name}
                                                 onChange={handleTempis} id="flexCheckDefault" />

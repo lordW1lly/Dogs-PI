@@ -1,5 +1,5 @@
 
-
+import { validate } from "./Validate"
 
 export function FormBTS() {
 

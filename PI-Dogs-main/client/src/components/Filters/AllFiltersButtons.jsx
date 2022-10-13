@@ -10,7 +10,7 @@ import { getTemperaments } from "../../actions";
 export function AllFiltersButtos() {
 
     const dispatch = useDispatch()
-    useEffect( ()=> {
+    useEffect( () => {
         dispatch(getTemperaments())
     },[])
     
