@@ -5,3 +5,8 @@
     
     object-fit: cover;
 }
+
+.noDeco {
+    text-decoration: none;
+    color: black;
+}
