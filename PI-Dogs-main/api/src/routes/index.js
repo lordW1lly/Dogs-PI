@@ -5,7 +5,7 @@ const axios = require('axios');
 const { Temperament, Dog } = require("../db");
 const { api_key } = process.env
 
-const apiKey = 'api_key=c28e9da8-8fe1-4d7d-8c0e-023aaa80d78d'
+/* const apiKey = 'api_key=c28e9da8-8fe1-4d7d-8c0e-023aaa80d78d' */
 // Importar todos los routers;
 // Ejemplo: const authRouter = require('./auth.js');
 
@@ -36,7 +36,7 @@ router.get('/dogs', async (req,res) => {
         try { //                              https://api.thedogapi.com/v1/breeds?api_key=c28e9da8-8fe1-4d7d-8c0e-023aaa80d78d  
             const dogsCreated = await Dog.findAll()
             
-            const allDogs = (await axios.get(`https://api.thedogapi.com/v1/breeds?${apiKey}`)).data.map( d => {
+            const allDogs = (await axios.get(`https://api.thedogapi.com/v1/breeds?${api_key}`)).data.map( d => {
                 return {
                     id: d.id,
                     image: d.image.url,
@@ -58,7 +58,7 @@ router.get('/dogs', async (req,res) => {
             dogsCreated = await Dog.findAll()
             dogsCreatedFiltered = dogsCreated.filter(dc => dc.name.includes(`${name}`))
             
-            let dogNombre = (await axios.get(`https://api.thedogapi.com/v1/breeds?${apiKey}`)).data.filter(dog => dog.name.toLowerCase().includes(name.toLowerCase())).map(p => {
+            let dogNombre = (await axios.get(`https://api.thedogapi.com/v1/breeds?${api_key}`)).data.filter(dog => dog.name.toLowerCase().includes(name.toLowerCase())).map(p => {
                 return {
                     id: p.id,
                     image: p.image.url, 
@@ -94,7 +94,7 @@ router.get('/dogs/:id', async (req, res) => {
     const dogsDB = await Dog.findAll();
     // let dogsDBid = dogsDB.filter( dbase => dbase.id == id)
     // console.log(dogsDBid)
-    let breedID = (await axios.get(`https://api.thedogapi.com/v1/breeds?${apiKey}`)).data.filter( b => b.id == id)
+    let breedID = (await axios.get(`https://api.thedogapi.com/v1/breeds?${api_key}`)).data.filter( b => b.id == id)
     //dogsDBid.map(dog => breedID.push(dog))
     if(breedID.length < 1) {
         let dogsDBid = dogsDB.filter( dbase => dbase.id == id)
@@ -140,7 +140,7 @@ router.get('/temperament', async (req,res) => {
     const tempsDB = await Temperament.findAll();
     const nodupDB = [...new Set(tempsDB)]
     if(tempsDB.length == 0){
-        const all = (await axios.get(`https://api.thedogapi.com/v1/breeds?${apiKey}`)).data.map( a => {
+        const all = (await axios.get(`https://api.thedogapi.com/v1/breeds?${api_key}`)).data.map( a => {
             return {
                 temperament: a.temperament
             }
