@@ -1,4 +1,5 @@
 import axios from 'axios';
+const UrlDeploy = 'https://theperritosapp-back-production.up.railway.app'
 
 
 
@@ -6,7 +7,7 @@ import axios from 'axios';
  export  function getDogs() {
     return async function(dispatch) {
         
-        let allDogs = (await axios.get(`http://localhost:3001/dogs`)).data;
+        let allDogs = (await axios.get(`${UrlDeploy}/dogs`)).data;
         
         dispatch({
             type:"GET_DOGS",
@@ -18,7 +19,7 @@ import axios from 'axios';
 
 export function searchDog(name) {
     return async function(dispatch) {
-        let breedName = (await axios.get(`http://localhost:3001/dogs?name=${name}`)).data;
+        let breedName = (await axios.get(`${UrlDeploy}/dogs?name=${name}`)).data;
         dispatch({
             type: "SEARCH_DOG",
             payload: breedName
@@ -27,7 +28,7 @@ export function searchDog(name) {
 }
 export function getDogID(id) {
     return async (dispatch) => { 
-        let dogID = (await axios.get(`http://localhost:3001/dogs/${id}`)).data
+        let dogID = (await axios.get(`${UrlDeploy}/dogs/${id}`)).data
         dispatch({
             type: "GET_DOG_ID",
             payload: dogID
@@ -37,7 +38,7 @@ export function getDogID(id) {
 
 export function getTemperaments() {
     return async (dispatch) => {
-        let dogTemperaments = (await axios.get('http://localhost:3001/temperament')).data
+        let dogTemperaments = (await axios.get(`${UrlDeploy}/temperament`)).data
         dispatch({
             type: "GET_TEMPERAMENTS",
             payload: dogTemperaments
@@ -73,7 +74,7 @@ export function createDog(dog, temperament) {
                 lifeSpan: dog.lifeSpan
             }
             let resp = ''
-            await axios.post('http://localhost:3001/dog', newDog)
+            await axios.post(`${UrlDeploy}/dog`, newDog)
             .then(response => resp = response.data)
             return dispatch({
                 type: 'CREATE_DOG',
@@ -95,7 +96,7 @@ export function filterByTemps(temperament) {
 
 export function filterTemps(selectedTemps) {
     return async (dispatch) => {
-        const allDogs =  (await axios.get(`http://localhost:3001/dogs`)).data
+        const allDogs =  (await axios.get(`${UrlDeploy}/dogs`)).data
         try {
             
             let splittedTemps = allDogs.map(dog =>  {
